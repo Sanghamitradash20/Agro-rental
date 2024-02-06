@@ -7,6 +7,7 @@ import LoginAdminPage from '../Pages/LoginAdminPage';
 import LoginVendorPage from '../Pages/LoginVendorPage';
 import SignupFarmerPage from '../Pages/SignupFarmerPage';
 import SignupVendorPage from '../Pages/SignupVendorPage';
+import Productuserpage from '../Pages/Productuserpage';
 
 const AllRoutes = () => {
   return (
@@ -17,6 +18,8 @@ const AllRoutes = () => {
       <Route path="/login/vendor" element={<LoginVendorPage/>}></Route>
       <Route path="/signup/farmer" element={<SignupFarmerPage/>}></Route>
       <Route path="/signup/vendor" element={<SignupVendorPage/>}></Route>
+      <Route path="/farmer/products" element={<Productuserpage/>}></Route>
+
     </Routes>
   );
 };

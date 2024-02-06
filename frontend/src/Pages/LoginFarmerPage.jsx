@@ -24,7 +24,7 @@ const FarmerLogin = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/farmers/login', formData);
       setMessage(response.data.message);
-      navigate('/products');
+      navigate('/farmer/products');
 
       // You can redirect the user or perform any other action based on the response
     } catch (error) {
