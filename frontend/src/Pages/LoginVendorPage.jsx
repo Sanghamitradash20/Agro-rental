@@ -159,9 +159,10 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 
 const VendorLoginPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     mobileNumber: '',
     otp: '' // New field for OTP
@@ -204,6 +205,14 @@ const VendorLoginPage = () => {
         otp: formData.otp
       });
       setOtpMessage(response.data.message);
+      // console.log(formData);
+      // navigate(`/vendor/dashboard/${formData.mobileNumber}`);
+      if (response.data.message === 'OTP verification successful') {
+        const vendorId = response.data.vendor._id; // Assuming this is the _id received from the server
+        navigate(`/vendor/dashboard/${vendorId}`);
+      } else {
+        setOtpMessage('Invalid OTP. Please try again.'); // You can display a message indicating that the OTP is invalid
+      }
     } catch (error) {
       console.error('Error verifying OTP:', error);
       setOtpMessage('Invalid OTP. Please try again.'); // You can display a message indicating that the OTP is invalid
