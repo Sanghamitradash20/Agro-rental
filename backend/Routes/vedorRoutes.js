@@ -7,6 +7,8 @@ const vendorController = require('../Controllers/vendorController');
 router.post('/signup', vendorController.signup);
 router.post('/login', vendorController.login);
 router.post('/verify-otp', vendorController.verifyOTP);
+router.get('/:vendorID', vendorController.getVendorByVendorID);
+router.put('/:vendorID', vendorController.updateVendorDetailsByVendorID);
 
 
 
