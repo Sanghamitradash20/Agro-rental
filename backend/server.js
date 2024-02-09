@@ -5,6 +5,7 @@ const cors = require('cors');
 const farmerRoutes = require('./Routes/farmerRoutes');
 const vendorRoutes = require('./Routes/vedorRoutes');
 const adminRoutes = require('./Routes/adminRoutes');
+const productRoutes = require('./Routes/productRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -29,6 +30,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/agridb")
 app.use('/api/farmers', farmerRoutes);
 app.use('/api/vendors', vendorRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/product', productRoutes);
 
 // Start the server
 app.listen(PORT, () => {
