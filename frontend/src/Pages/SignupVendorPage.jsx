@@ -82,7 +82,8 @@ const SignupVendorPage = () => {
       if (response.data.bool === "true") {
         // history.push('./Productvendorpage', { token: response.data.token });
         const vendorId = response.data.token;
-        navigate(`/vendor/products?id=${vendorId}`);
+        navigate(`vendor/dashboard/:vendorID?id=${vendorId}`);
+
       } else if(response.data.bool === "falseO") {
         console.log('Signup not successful, OTP is incorrect');
       } else if(response.data.bool === "falseM") {

@@ -90,7 +90,7 @@ const vendorController = {
         }
         if (result) {
           const token = jwt.sign({ userID: user._id }, JWT_KEY);
-          return res.status(200).json({ msg: "Logged In", token });
+          return res.status(200).json({ msg: "true", token });
         } else {
           return res.status(401).json({ msg: "Wrong credentials" });
         }
