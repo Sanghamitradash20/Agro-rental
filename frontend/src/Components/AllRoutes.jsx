@@ -8,6 +8,7 @@ import LoginVendorPage from '../Pages/LoginVendorPage';
 import SignupFarmerPage from '../Pages/SignupFarmerPage';
 import SignupVendorPage from '../Pages/SignupVendorPage';
 import Productuserpage from '../Pages/Productuserpage';
+import Produtvendorpage from '../Pages/Productvendorpage'
 
 const AllRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AllRoutes = () => {
       <Route path="/signup/farmer" element={<SignupFarmerPage/>}></Route>
       <Route path="/signup/vendor" element={<SignupVendorPage/>}></Route>
       <Route path="/farmer/products" element={<Productuserpage/>}></Route>
+      <Route path="/vendor/products" element={<Produtvendorpage/>}></Route>
 
     </Routes>
   );
