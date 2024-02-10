@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const accountSid = "AC3e4c15663fc32f95d8dad97f9e217e86";
-const authToken = "cc4de47024f8130ebf7d31cb479d7b1b";
+const authToken = "0570b72ca076f35a143be3f30e2d907e";
 const client = require("twilio")(accountSid, authToken);
 const JWT_KEY = process.env.JWT_KEY;
 
@@ -64,7 +64,8 @@ const vendorController = {
           pincode: req.body.pincode,
           password: await bcrypt.hash(password, 12)
         });
-        const token = jwt.sign({ id: newUser._id }, JWT_KEY);
+        // const token = jwt.sign({ id: newUser._id }, JWT_KEY);
+        const id=newUser._id;
         await newUser.save();
         return res.status(200).json({ bool: "true", token });
       } else {
@@ -89,8 +90,9 @@ const vendorController = {
           return res.status(500).json({ msg: "Server error" });
         }
         if (result) {
-          const token = jwt.sign({ userID: user._id }, JWT_KEY);
-          return res.status(200).json({ msg: "true", token });
+          // const token = jwt.sign({ userID: user._id }, JWT_KEY);
+          const id=user._id;
+          return res.status(200).json({ msg: "true", id }); 
         } else {
           return res.status(401).json({ msg: "Wrong credentials" });
         }
@@ -100,6 +102,7 @@ const vendorController = {
       return res.status(500).json({ msg: "Server error" });
     }
   },
+  
 };
 
 module.exports = vendorController;

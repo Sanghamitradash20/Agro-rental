@@ -23,13 +23,17 @@ const VendorLoginPage = () => {
       const response = await axios.post('http://localhost:5000/api/vendors/login', {
         mobileNumber: formData.mobileNumber,
         password: formData.password
-      }); if (response.data.bool === "true") {
-        const vendorId = response.data.token;
-        navigate(`vendor/dashboard/:vendorID?id=${vendorId}`);
+      }); 
+      console.log(response.data.id);
+      console.log(response.data);
+      if (response.data.msg === "true") {
+        const vendorId = response.data.id;
+        console.log(response.data.id);
+        navigate(`/vendor/dashboard/${vendorId}`);
 
-      } else if(response.data.bool === "falseO") {
+      } else if(response.data.msg === "falseO") {
         console.log('Signup not successful, OTP is incorrect');
-      } else if(response.data.bool === "falseM") {
+      } else if(response.data.msg === "falseM") {
         console.log('Signup not successful, mobile number is incorrect');
       }
     } catch (error) {
