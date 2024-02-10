@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const accountSid = "AC3e4c15663fc32f95d8dad97f9e217e86";
-const authToken = "cc4de47024f8130ebf7d31cb479d7b1b";
+const authToken = "0570b72ca076f35a143be3f30e2d907e";
 const client = require("twilio")(accountSid, authToken);
 const JWT_KEY = process.env.JWT_KEY;
 
@@ -21,7 +21,7 @@ let tempOTP = "";
 const vendorController = {
   signup: async (req, res) => {
     try {
-      const newuser = ({ mobileNumber } = req.body);
+         const { mobileNumber } = req.body;
 
       const existingUser = await User.findOne({ mobileNumber });
       if (existingUser) {
@@ -40,20 +40,13 @@ const vendorController = {
       res.status(200).json({ msg: "OTP Sent" });
     } catch (e) {
       console.error(e);
-      res.status(500).json({ error: e.message });
+      res.status(500).json({ error: e });
     }
   },
 
   verifyOTP: async (req, res) => {
     try {
       const { otp: userOTP, mobileNumber, password } = req.body;
-      //  bcrypt.hash(pass, 12, async (err, hash) => {
-      //   if (err) {
-      //     res.send({ msg: "something went wrong please try again" });
-      //   } else {
-      //     encryp=hash;
-      //   }
-      // });
       if (userOTP === tempOTP) {
         const newUser = new User({
           Name: req.body.Name,
