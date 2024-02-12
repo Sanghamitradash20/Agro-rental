@@ -1,7 +1,16 @@
-// VendorLoginPage.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Center,
+  Box,
+  useMediaQuery,
+  Heading,
+} from '@chakra-ui/react';
 
 const VendorLoginPage = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +18,8 @@ const VendorLoginPage = () => {
     password: ''
   });
   const [message, setMessage] = useState('');
+  const [isMobile] = useMediaQuery("(max-width: 320px)");
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,34 +42,41 @@ const VendorLoginPage = () => {
   };
 
   return (
-    <div>
-      <h2>Vendor Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="mobileNumber">Mobile Number:</label>
-          <input
-            type="text"
-            id="mobileNumber"
-            name="mobileNumber"
-            value={formData.mobileNumber}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      {message && <p>{message}</p>}
-      <p>Signup<Link to="/signup/vendor">Click here</Link></p>
-    </div>
+    <Box minH="100vh" bgGradient="linear(green.500, blue.300, green.800)">
+      <Center minH="65vh">
+        <Box p="30" bgGradient="linear(green.500, blue.300, green.800)" w={isMobile ? "80%" : (isLargerThan768 ? "50%" : "100%")}
+          borderRadius={20}
+          boxShadow="0 0 20px darkgray, 0 0 20px black"
+        >
+          <Heading textAlign="center" fontSize="6xl">Vendor Login</Heading>
+          <form onSubmit={handleSubmit} style={{ fontSize: '18px', fontFamily: 'Arial' }}>
+            <FormControl sx={{ marginBottom: "20px" }}>
+              <FormLabel htmlFor="mobileNumber">Mobile Number:</FormLabel>
+              <Input
+                type="text"
+                id="mobileNumber"
+                name="mobileNumber"
+                value={formData.mobileNumber}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl sx={{ marginBottom: "20px" }}>
+              <FormLabel htmlFor="password">Password:</FormLabel>
+              <Input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <Button colorScheme="blue" type="submit" w="full">Login</Button>
+          </form>
+          {message && <p>{message}</p>}
+          <p>Signup<Link to="/signup/vendor">Click here</Link></p>
+        </Box>
+      </Center>
+    </Box>
   );
 };
 

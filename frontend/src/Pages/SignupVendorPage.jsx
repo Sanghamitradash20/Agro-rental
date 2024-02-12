@@ -1,6 +1,16 @@
-// SignupVendorPage.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Center,
+  Box,
+  useMediaQuery,
+  Heading,
+} from '@chakra-ui/react';
 
 const SignupVendorPage = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +22,8 @@ const SignupVendorPage = () => {
     pincode: ''
   });
   const [message, setMessage] = useState('');
+  const [isMobile] = useMediaQuery("(max-width: 320px)");
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,73 +45,80 @@ const SignupVendorPage = () => {
   };
 
   return (
-    <div>
-      <h2>Vendor Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="mobileNumber">Mobile Number:</label>
-          <input
-            type="text"
-            id="mobileNumber"
-            name="mobileNumber"
-            value={formData.mobileNumber}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="address">Address:</label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="nearestPoliceStation">Nearest Police Station:</label>
-          <input
-            type="text"
-            id="nearestPoliceStation"
-            name="nearestPoliceStation"
-            value={formData.nearestPoliceStation}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="cityVillage">City/Village:</label>
-          <input
-            type="text"
-            id="cityVillage"
-            name="cityVillage"
-            value={formData.cityVillage}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="pincode">Pincode:</label>
-          <input
-            type="text"
-            id="pincode"
-            name="pincode"
-            value={formData.pincode}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">Signup</button>
-      </form>
-      {message && <p>{message}</p>}
-    </div>
+    <Box minH="100vh" bgGradient="linear(green.500, blue.300, green.800)">
+      <Center minH="100vh">
+        <Box p="30" bgGradient="linear(green.500, blue.300, green.800)" w={isMobile ? "80%" : (isLargerThan768 ? "50%" : "100%")}
+          borderRadius={20}
+          boxShadow="0 0 20px darkgray, 0 0 20px black"
+        >
+          <Heading textAlign="center" fontSize="6xl">Vendor Signup</Heading>
+          <form onSubmit={handleSubmit} style={{ fontSize: '18px', fontFamily: 'Arial' }}>
+            <FormControl sx={{ marginBottom: "20px" }}>
+              <FormLabel htmlFor="name">Name:</FormLabel>
+              <Input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl sx={{ marginBottom: "20px" }}>
+              <FormLabel htmlFor="mobileNumber">Mobile Number:</FormLabel>
+              <Input
+                type="text"
+                id="mobileNumber"
+                name="mobileNumber"
+                value={formData.mobileNumber}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl sx={{ marginBottom: "20px" }}>
+              <FormLabel htmlFor="address">Address:</FormLabel>
+              <Input
+                type="text"
+                id="address"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl sx={{ marginBottom: "20px" }}>
+              <FormLabel htmlFor="nearestPoliceStation">Nearest Police Station:</FormLabel>
+              <Input
+                type="text"
+                id="nearestPoliceStation"
+                name="nearestPoliceStation"
+                value={formData.nearestPoliceStation}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl sx={{ marginBottom: "20px" }}>
+              <FormLabel htmlFor="cityVillage">City/Village:</FormLabel>
+              <Input
+                type="text"
+                id="cityVillage"
+                name="cityVillage"
+                value={formData.cityVillage}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl sx={{ marginBottom: "20px" }}>
+              <FormLabel htmlFor="pincode">Pincode:</FormLabel>
+              <Input
+                type="text"
+                id="pincode"
+                name="pincode"
+                value={formData.pincode}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <Button colorScheme="blue" type="submit" w="full">Signup</Button>
+          </form>
+          {message && <p>{message}</p>}
+        </Box>
+      </Center>
+    </Box>
   );
 };
 
