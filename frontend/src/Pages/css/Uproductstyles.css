@@ -1,0 +1,89 @@
+@media screen and (max-width: 480px) {
+  .image {
+    padding-bottom: 50vw;
+    background-size: contain;
+  }
+  .parent {
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .image {
+    padding-bottom: 50vw;
+    background-size: contain;
+  }
+  .cult {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .image {
+    padding-bottom: 50vw;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .image {
+    padding-bottom: 50vw;
+  }
+}
+@media screen and (max-width: 2000px) {
+  .image {
+    padding-bottom: 50vw;
+    width: 100%;
+    background-size: cover;
+  }
+  .parent {
+    margin-top: 50px;
+    margin-left: 10px;
+  }
+  #tract {
+    width: 400px;
+  }
+  #cult {
+    width: 300px;
+  }
+  .cult {
+    margin-left: 20px;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+.image {
+  background-image: url("../../images/back.jpeg");
+
+  background-repeat: no-repeat;
+  width: 100%;
+  background-position: center top;
+  height: 0;
+}
+.Pheader {
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+.parent {
+  justify-content: stretch;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+}
+.userdetails {
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: "hidden";
+  padding: 4px;
+  width: 30%;
+  background-color: "skyblue";
+  font-size: x-large;
+  color: azure;
+  margin: 40px;
+  /* background-color: #c48c53; */
+}

@@ -3,22 +3,6 @@ import React, { useState } from 'react';
 const VendorAccountForm = ({ initialDetails={} ,onSave,onCancel}) => {
   console.log(initialDetails);
   const [details, setDetails] = useState(initialDetails);
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setDetails(prevDetails => ({
-  //     ...prevDetails,
-  //     [name]: value
-  //   }));
-  // };
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setDetails(prevDetails => ({
-  //         ...prevDetails,
-  //         [name]: value
-  //       }));
-  //   onChange({ ...initialDetails, [name]: value });
-  // };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDetails(prevDetails => ({
@@ -35,8 +19,6 @@ const VendorAccountForm = ({ initialDetails={} ,onSave,onCancel}) => {
     onCancel();
   };
   const handleButtonClick = () => {
-    // Handle button click logic here
-    // You can perform any action you want when the button is clicked
     console.log('Button clicked');
   };
 
