@@ -1,71 +1,101 @@
-import React from "react";
-import { Box, Grid, GridItem, Heading, Stack } from "@chakra-ui/react";
+import { Box, Text, SimpleGrid, Image, Flex } from '@chakra-ui/react';
 import { useNavigate } from "react-router-dom";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
+import { useParams } from 'react-router-dom';
+import Vproductstyles from './css/Vproductstyles.css'
+const Productvendorpage = () => {
+const {vendorID } = useParams();
+const [details,setDetails,]=useState({});
+const Password='';
+const getdetails = async () => {
+try {
+  const response = await axios.get(`http://localhost:5000/api/vendors/details/${vendorID}`);
+  setDetails(response.data.details); 
+  Password=response.data.pass;
+  console.log(response);
+} catch (error) {
+  console.error('Error in fetching', error.message);
+}
+}
+useEffect(() => {
+  getdetails(); 
+}, [vendorID]);
 
-const ProductPage = () => {
-  const navigate = useNavigate();
-  const userDetails = {
-    name: "NANDU",
-    email: "NANDU@example.com",
-    address: "123 Main Street, City",
-    phoneNumber: "123-456-7890",
+const UserInformation = ({ name, phone, address, password }) => (
+  <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
+    <Box p="6">
+      <Box d="flex" alignItems="baseline">
+        <Text>Name: {name}</Text>
+      </Box>
+      <Box>
+        <Text>Phone: {phone}</Text>
+        <Text>Address: {address}</Text>
+        <Text>Password: {password}</Text>
+      </Box>
+    </Box>
+  </Box>
+);
+
+// const ProductCard = ({ product, farmer }) => (
+//   <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
+//     <Image src={product.image} alt={product.id} />
+//     <Box p="6">
+//       <Box d="flex" alignItems="baseline">
+//         <Text>Product ID: {product.id}</Text>
+//         <Text>Order ID: {product.orderId}</Text>
+//         <Text>Brand: {product.brand}</Text>
+//         <Text>Price: {product.price}</Text>
+//         <Text>Condition: {product.condition}</Text>
+//       </Box>
+//       <Box>
+//         <Text>Name: {farmer.name}</Text>
+//         <Text>Address: {farmer.address}</Text>
+//         <Text>Phone No.: {farmer.phone}</Text>
+//         <Text>Duration: {farmer.duration}</Text>
+//       </Box>
+//     </Box>
+//   </Box>
+// );
+  const user = {
+    name: details.Name,
+    phone: details.mobileNumber,
+    address: details.address + details.cityVillage + details.pincode,
+    password: Password,
   };
+
   const products = [
-    { id: 1, name: "Product 1", price: "$10" },
-    { id: 2, name: "Product 2", price: "$20" },
-    { id: 3, name: "Product 3", price: "$30" },
-    { id: 4, name: "Product 4", price: "$40" },
-    { id: 5, name: "Product 5", price: "$50" },
-    { id: 6, name: "Product 6", price: "$60" },
+    {
+      id: 'TRACTOR657',
+      orderId: 'JH34D117',
+      brand: 'John Deere',
+      price: '30,000',
+      condition: 'New',
+      farmer: {
+        name: 'Alam Ali',
+        address: 'Bagha,Kusma',
+        phone: '8835069014',
+        duration: 'JM.22D-30H',
+      },
+    },
   ];
 
   return (
-    <Stack direction="row" spacing={8} width="100%">
-      <Box
-        width="20%"
-        p={4}
-        borderWidth="1px"
-        borderColor="gray.200"
-        borderRadius="md"
-      >
-        <Heading size="md" mb={4}>
-          User Details
-        </Heading>
-        <Box>
-          <strong>Name:</strong> {userDetails.name}
-        </Box>
-        <Box>
-          <strong>Email:</strong> {userDetails.email}
-        </Box>
-        <Box>
-          <strong>Address:</strong> {userDetails.address}
-        </Box>
-        <Box>
-          <strong>Phone Number:</strong> {userDetails.phoneNumber}
-        </Box>
+  <Box className='back'>
+    <Flex direction={{ base: 'column', md: 'row' }}>
+      <Box flex="1" p="5">
+        <UserInformation {...user} />
       </Box>
-      <Box width="80%" p={4}>
-        <Heading size="md" mb={4}>
-          Products
-        </Heading>
-        <Grid templateColumns="repeat(4, 1fr)" gap={6}>
-          {products.map((product) => (
-            <GridItem key={product.id}>
-              <Box borderWidth="1px" rounded="lg" p={4} borderColor="gray.200">
-                <Heading size="sm" mb={2}>
-                  {product.name}
-                </Heading>
-                <Box>
-                  <strong>Price:</strong> {product.price}
-                </Box>
-              </Box>
-            </GridItem>
+      <Box flex="2" p="5">
+        {/* <SimpleGrid columns={{ base: 1, md: 2 }} spacing="5">
+          {products.map((product, index) => (
+            <ProductCard key={index} {...product} />
           ))}
-        </Grid>
+        </SimpleGrid> */}
       </Box>
-    </Stack>
+    </Flex>
+    </Box>
   );
 };
 
-export default ProductPage;
+export default Productvendorpage;

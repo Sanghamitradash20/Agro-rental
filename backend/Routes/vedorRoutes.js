@@ -6,6 +6,6 @@ const vendorController = require('../Controllers/vendorController');
 router.post('/signup', vendorController.signup);
 router.post('/verify-otp', vendorController.verifyOTP);
 router.post('/login',vendorController.login)
-
+router.post('/details/:vendorID',vendorController.details)
 
 module.exports = router;

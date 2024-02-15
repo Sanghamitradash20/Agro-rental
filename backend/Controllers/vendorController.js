@@ -65,9 +65,9 @@ const vendorController = {
           password: await bcrypt.hash(password, 12)
         });
         // const token = jwt.sign({ id: newUser._id }, JWT_KEY);
-        const id=newUser._id;
+        const vendorId=newUser._id;
         await newUser.save();
-        return res.status(200).json({ bool: "true", token });
+        return res.status(200).json({ bool: "true", vendorId });
       } else {
         tempOTP = "";
         return res.status(400).json({ bool: "falseO" }); //handle pending
@@ -102,6 +102,20 @@ const vendorController = {
       return res.status(500).json({ msg: "Server error" });
     }
   },
+  details: async (req, res) => {
+    try {
+      const { vendorID } = req.params;
+      const details = await User.findOne({ _id: vendorID }); 
+      if (details) {
+        res.status(200).json({ details });
+      } else {
+        res.status(404).json({ msg: 'Details not found' });
+      }
+    } catch (error) {
+      console.error('Error fetching details:', error.message);
+      res.status(500).json({ msg: 'Internal server error' });
+    }
+  }
   
 };
 

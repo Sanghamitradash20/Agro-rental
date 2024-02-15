@@ -15,8 +15,15 @@ import Uproductstyles from "./css/Uproductstyles.css";
 import tractor from "../images/tractor.png";
 import cult from "../images/cult.png";
 import { useParams } from 'react-router-dom';
+import baler from '../images/baler.jpg';
+import Tractor from '../images/Tractor.png';
+import rotavtor from '../images/rotavtor.png';
+import thresher from '../images/thresher.jpg';
+import cultivator1 from '../images/cultivator1.png';
+import digger from '../images/digger.png';
 const ProductPage = () => {
-  const { ID } = useParams();
+  const {vendorID } = useParams();
+  console.log(vendorID)
   const navigate = useNavigate();
   const user = {
     Name: "John Doe",
@@ -25,26 +32,30 @@ const ProductPage = () => {
     pincode: "10001",
   };
   const [details,setDetails,]=useState({});
-  const getdetails = async (event) => {
-    event.preventDefault();
+  const getdetails = async () => {
   try {
-    const response = await axios.get(`http://localhost:5000/api/farmers/details/${ID}`);
+    const response = await axios.get(`http://localhost:5000/api/farmers/details/${vendorID}`);
     setDetails(response.data.details); 
+    console.log(response);
   } catch (error) {
     console.error('Error in fetching', error.message);
   }
   }
   useEffect(() => {
     getdetails(); 
-  }, [ID]);
+  }, [vendorID]);
   const products = [
-    { id: 1, name: "Product 1", price: "$10" },
-    { id: 2, name: "Product 2", price: "$20" },
-    { id: 3, name: "Product 3", price: "$30" },
-    { id: 4, name: "Product 4", price: "$40" },
-    { id: 5, name: "Product 5", price: "$50" },
-    { id: 6, name: "Product 6", price: "$60" },
+    { id: 1, name: "Rotavtor", price: "$10",image: rotavtor },
+    { id: 2, name: "Digger", price: "$20",image:digger  },
+    { id: 3, name: "Tractor", price: "$30",image:Tractor  },
+    { id: 4, name: "Cultivator", price: "$40",image:cultivator1  },
+    { id: 5, name: "Thresher", price: "$50",image:thresher  },
+    { id: 6, name: "Baler", price: "$60",image:baler  },
   ];
+  const handleOnClick = (productId) => {
+    console.log(productId);
+  };
+  
   // base: "0px",
   // sm: "320px",
   // md: "768px",
@@ -53,7 +64,7 @@ const ProductPage = () => {
   // "2xl": "1536px",
   return (
     <div>
-      <Navbar />
+      <Navbar  />
       <Box className="image" width={{ base: "100%", md: "80%", lg: "60%" }}>
         <Stack direction="column" spacing={{ base: 4, md: 8 }} width={"100%"}>
           <Box className="Pheader">
@@ -62,7 +73,7 @@ const ProductPage = () => {
                 fontSize={{ sm: "20px", md: "40px", lg: "50px" }}
                 marginTop={{ sm: "20px", md: "50px", lg: "80px" }}
               >
-                AGRI RENTAL
+                AGRO RENTAL
               </Text>
             </ChakraProvider>
           </Box>
@@ -90,7 +101,7 @@ const ProductPage = () => {
             User Details
           </text> <br />
           <text mt={2} color="black">
-            <strong>Name:</strong> {details.name}
+            <strong>Name:</strong> {details.Name}
           </text><br />
           <text mt={2} color="black">
             <strong>Phone Number:</strong> {details.mobileNumber}
@@ -100,12 +111,35 @@ const ProductPage = () => {
           </text><br />
           <text mt={2} color="black">
             <strong>Pincode:</strong> {details.pincode}
-          </text>
+          </text><br />
           <text mt={2} color="black">
             <strong>Police station:</strong> {details.nearestPoliceStation}
           </text>
         </Box>
       </Box>
+      <Box  p={4} className="grids">
+  <Heading size="md" mb={4}>
+    Products
+  </Heading>
+  <Grid templateColumns="repeat(3, 1fr)" gap={6}> 
+    {products.map((product) => (
+      <GridItem key={product.id}>
+        <Box borderWidth="1px" rounded="lg" p={4} borderColor="gray.200" width="100%" height="100%">
+          <img src={product.image} className="product-image" onClick={() => handleOnClick(product.id)} alt={product.name} /> 
+          <Heading size="sm" mb={2}>
+            {product.name}
+          </Heading>
+          <Box>
+            <strong>Price:</strong> {product.price}
+          </Box>
+        </Box>
+      </GridItem>
+    ))}
+  </Grid>
+</Box>
+
+
+
     </div>
   );
 };
