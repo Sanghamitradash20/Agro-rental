@@ -44,7 +44,7 @@ const SignupFarmerPage = () => {
   };
 
   return (
-    <Box minH="100vh" size='lg'>
+    <Box minH="100vh" size='lg'bgGradient="linear(green.500, blue.300, green.800)">
       <Center minH="100vh">
         <Box p="30" bgGradient="linear(green.500, blue.300, green.800)" w={isMobile ? "80%" : (isLargerThan768 ? "50%" : "100%")}
           borderRadius={20}

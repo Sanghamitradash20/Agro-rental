@@ -32,9 +32,9 @@ const FarmerLogin = () => {
   };
 
   return (
-    <Box minH="100vh" bgGradient="linear(green.500, blue.300, green.800)">
+    <Box minH="100vh" bgGradient="linear(#D4E7C5,#BFD8AF,#99BC85)">
       <Center minH="65vh">
-        <Box p="30" bgGradient="linear(green.500, blue.300, green.800)" w="100%" maxW="400px" borderRadius={20} boxShadow="0 0 20px darkgray, 0 0 20px black">
+        <Box p="30" bgGradient="linear(#D4E7C5,#BFD8AF,#99BC85)" w="100%" maxW="400px" borderRadius={20} boxShadow="0 0 20px darkgray, 0 0 20px black">
           <Heading textAlign="center" fontSize="6xl" mb="6">Farmer Login</Heading>
           <form onSubmit={handleSubmit} style={{ fontSize: '18px', fontFamily: 'Arial' }}>
             <FormControl sx={{ marginBottom: "20px" }}>
