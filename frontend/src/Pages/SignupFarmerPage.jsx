@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Box,
+  useMediaQuery,
+  Heading,
+  Center,
+  Text,
+  NumberInput,
+  NumberInputField,
+  ChakraProvider
+} from '@chakra-ui/react';
 const SignupFarmerPage = () => {
   const navigate = useNavigate();
+  const [isMobile] = useMediaQuery("(max-width: 320px)");
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
 
-  // State variables for form data and OTP
   const [formData, setFormData] = useState({
     name: '',
     mobileNumber: '',
@@ -110,94 +124,125 @@ const SignupFarmerPage = () => {
   };
 
   return (
-    <div>
-      <h2>Farmer Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Mobile Number:</label>
-          <input
-            type="text"
-            name="mobileNumber"
-            value={formData.mobileNumber}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Address:</label>
-          <input
-            type="text"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Nearest Police Station:</label>
-          <input
-            type="text"
-            name="nearestPoliceStation"
-            value={formData.nearestPoliceStation}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>City/Village:</label>
-          <input
-            type="text"
-            name="cityVillage"
-            value={formData.cityVillage}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Pincode:</label>
-          <input
-            type="text"
-            name="pincode"
-            value={formData.pincode}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>PIN (4 digits):</label>
-          <input
-            type="text"
-            name="pin"
-            value={formData.pin}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit" disabled={isSendingOTP || timer > 0}>
-          {isSendingOTP ? 'Sending OTP...' : timer > 0 ? `Resend OTP in ${timer}s` : 'Send OTP'}
-        </button>
-      </form>
-      {otpData.showMessage && (
-        <div>
-          <p>{otpData.message}</p>
-          <form onSubmit={handleOTPSubmit}>
-            <input
-              type="number"
-              name="otp"
-              value={otpData.otp}
-              onChange={(e) => setOtpData({ ...otpData, otp: e.target.value })}
-              placeholder="Enter OTP"
+    <ChakraProvider>
+    <Box
+    minH="100vh"
+    size="lg"
+    bgGradient="linear(green.500, blue.300, green.800)"
+  >
+    <Center minH="100vh">
+      <Box
+        p="30"
+        bgGradient="linear(green.500, blue.300, green.800)"
+        w={isMobile ? "80%" : isLargerThan768 ? "50%" : "100%"}
+        borderRadius={20}
+        boxShadow="0 0 20px darkgray, 0 0 20px black"
+      >
+        <Heading textAlign="center" fontSize="6xl">
+          Farmer Signup
+        </Heading>
+        <form
+          onSubmit={handleSubmit}
+          style={{ fontSize: "18px", fontFamily: "Arial" }}
+        >
+          <FormControl sx={{ marginBottom: "20px" }}>
+            <FormLabel htmlFor="name">Name:</FormLabel>
+            <Input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
             />
-            <button type="submit">Verify OTP</button>
-          </form>
-        </div>
-      )}
-    </div>
-  );
+          </FormControl>
+          <FormControl sx={{ marginBottom: "20px" }}>
+            <FormLabel htmlFor="mobileNumber">Mobile Number:</FormLabel>
+            <Input
+              type="text"
+              id="mobileNumber"
+              name="mobileNumber"
+              value={formData.mobileNumber}
+              onChange={handleChange}
+            />
+          </FormControl>
+          <FormControl sx={{ marginBottom: "20px" }}>
+            <FormLabel htmlFor="address">Address:</FormLabel>
+            <Input
+              type="text"
+              id="address"
+              name="address"
+              value={formData.address}
+              onChange={handleChange}
+            />
+          </FormControl>
+          <FormControl sx={{ marginBottom: "20px" }}>
+            <FormLabel htmlFor="nearestPoliceStation">
+              Nearest Police Station:
+            </FormLabel>
+            <Input
+              type="text"
+              id="nearestPoliceStation"
+              name="nearestPoliceStation"
+              value={formData.nearestPoliceStation}
+              onChange={handleChange}
+            />
+          </FormControl>
+          <FormControl sx={{ marginBottom: "20px" }}>
+            <FormLabel htmlFor="cityVillage">City/Village:</FormLabel>
+            <Input
+              type="text"
+              id="cityVillage"
+              name="cityVillage"
+              value={formData.cityVillage}
+              onChange={handleChange}
+            />
+          </FormControl>
+          <FormControl sx={{ marginBottom: "20px" }}>
+            <FormLabel htmlFor="pincode">Pincode:</FormLabel>
+            <Input
+              type="text"
+              id="pincode"
+              name="pincode"
+              value={formData.pincode}
+              onChange={handleChange}
+            />
+          </FormControl>
+          <FormControl sx={{ marginBottom: "20px" }}>
+            <FormLabel htmlFor="pin">PIN (4 digits):</FormLabel>
+            <Input
+              type="text"
+              id="pin"
+              name="pin"
+              value={formData.pin}
+              onChange={handleChange}
+            />
+          </FormControl>
+          {otpData.showMessage && (
+            <Box>
+              <Text>{otpData.message}</Text>
+              <form onSubmit={handleOTPSubmit}>
+                <FormControl id="otp" isRequired>
+                  <FormLabel>Enter OTP</FormLabel>
+                  <NumberInput
+                    value={otpData.otp}
+                    onChange={(value) =>
+                      setOtpData({ ...otpData, otp: value })
+                    }
+                  >
+                    <NumberInputField />
+                  </NumberInput>
+                </FormControl>
+                <Button type="submit" colorScheme="blue" mt={4}>
+                  Verify OTP
+                </Button>
+              </form>
+            </Box>
+          )}
+        </form>
+      </Box>
+    </Center>
+  </Box>
+  </ChakraProvider>
+);
 };
-
 export default SignupFarmerPage;

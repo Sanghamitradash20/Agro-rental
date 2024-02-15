@@ -1,4 +1,4 @@
-import { Box, Text, SimpleGrid, Image, Flex } from '@chakra-ui/react';
+import { Box, Text, SimpleGrid, Image, Flex,ChakraProvider } from '@chakra-ui/react';
 import { useNavigate } from "react-router-dom";
 import React, { useState,useEffect } from "react";
 import axios from "axios";
@@ -81,6 +81,7 @@ const UserInformation = ({ name, phone, address, password }) => (
   ];
 
   return (
+    <ChakraProvider>
   <Box className='back'>
     <Flex direction={{ base: 'column', md: 'row' }}>
       <Box flex="1" p="5">
@@ -95,6 +96,7 @@ const UserInformation = ({ name, phone, address, password }) => (
       </Box>
     </Flex>
     </Box>
+    </ChakraProvider>
   );
 };
 

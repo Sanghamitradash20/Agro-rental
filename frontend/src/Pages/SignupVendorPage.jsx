@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link,useNavigate } from 'react-router-dom';
-// import { useHistory } from 'react-router-dom'; 
+import {
+  FormControl,
+  FormLabel,
+  Input,
+  Button,
+  Center,
+  Box,
+  useMediaQuery,
+  Heading,
+  Text,
+  NumberInput,
+  NumberInputField,
+  ChakraProvider
+} from '@chakra-ui/react';
+
 const SignupVendorPage = () => {
-  // const history = useHistory();
+
   const [formData, setFormData] = useState({
     Name: '',
     mobileNumber: '',
@@ -38,7 +52,7 @@ const SignupVendorPage = () => {
     }
     return true;
   };
-  const handleSignup = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (!isFormFilled()) {
       alert('Please fill in all the fields.');
@@ -96,98 +110,69 @@ const SignupVendorPage = () => {
       });
     }
   };
+
+  const [isMobile] = useMediaQuery("(max-width: 320px)");
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   return (
-    <div>
-      <h2>Vendor Signup</h2>
-      <form onSubmit={handleSignup}>
-        <div>
-          <label htmlFor="Name">Name:</label>
-          <input
-            type="text"
-            id="Name"
-            name="Name"
-            value={formData.Name}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="mobileNumber">Mobile Number:</label>
-          <input
-            type="number"
-            id="mobileNumber"
-            name="mobileNumber"
-            value={formData.mobileNumber}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="address">Address:</label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="nearestPoliceStation">Nearest Police Station:</label>
-          <input
-            type="text"
-            id="nearestPoliceStation"
-            name="nearestPoliceStation"
-            value={formData.nearestPoliceStation}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="cityVillage">City/Village:</label>
-          <input
-            type="text"
-            id="cityVillage"
-            name="cityVillage"
-            value={formData.cityVillage}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="pincode">Pincode:</label>
-          <input
-            type="number"
-            id="pincode"
-            name="pincode"
-            value={formData.pincode}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">password:</label>
-          <input
-            type="text"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit" disabled={isSendingOTP || timer > 0}>
-          {isSendingOTP ? 'Sending OTP...' : timer > 0 ? `Retry in ${timer}s` : 'Send OTP'}
-        </button>
-      </form>
-      {otpData.showMessage && <p>{otpData.message}</p>}
-      {otpData.showMessage && (
-        <form onSubmit={handleOTPSubmit}>
-          <input
-            type="number"
-            name="otp"
-            value={otpData.otp}
-            onChange={(e) => setOtpData({ ...otpData, otp: e.target.value })}
-            placeholder="Enter OTP"
-          />
-          <button type="submit">Verify OTP</button>
+    <ChakraProvider>
+    <Box minH="100vh" bgGradient="linear(green.500, blue.300, green.800)">
+    <Center minH="100vh">
+      <Box p="30" bgGradient="linear(green.500, blue.300, green.800)" w={isMobile ? "80%" : (isLargerThan768 ? "50%" : "100%")}
+        borderRadius={20}
+        boxShadow="0 0 20px darkgray, 0 0 20px black"
+      >
+        <Heading textAlign="center" fontSize="6xl">Vendor Signup</Heading>
+        <form onSubmit={handleSubmit}>
+          <FormControl id="name" isRequired>
+            <FormLabel>Name:</FormLabel>
+            <Input type="text" value={formData.name} onChange={handleChange} />
+          </FormControl>
+          <FormControl id="mobileNumber" isRequired>
+            <FormLabel>Mobile Number:</FormLabel>
+            <Input type="number" value={formData.mobileNumber} onChange={handleChange} />
+          </FormControl>
+          <FormControl id="address" isRequired>
+            <FormLabel>Address:</FormLabel>
+            <Input type="text" value={formData.address} onChange={handleChange} />
+          </FormControl>
+          <FormControl id="nearestPoliceStation" isRequired>
+            <FormLabel>Nearest Police Station:</FormLabel>
+            <Input type="text" value={formData.nearestPoliceStation} onChange={handleChange} />
+          </FormControl>
+          <FormControl id="cityVillage" isRequired>
+            <FormLabel>City/Village:</FormLabel>
+            <Input type="text" value={formData.cityVillage} onChange={handleChange} />
+          </FormControl>
+          <FormControl id="pincode" isRequired>
+            <FormLabel>Pincode:</FormLabel>
+            <Input type="number" value={formData.pincode} onChange={handleChange} />
+          </FormControl>
+          <FormControl id="password" isRequired>
+            <FormLabel>Password:</FormLabel>
+            <Input type="password" value={formData.password} onChange={handleChange} />
+          </FormControl>
+          <Button colorScheme="blue" type="submit" w="full" isDisabled={isSendingOTP || timer > 0}>
+            {isSendingOTP ? 'Sending OTP...' : timer > 0 ? `Retry in ${timer}s` : 'Send OTP'}
+          </Button>
         </form>
-      )}
-    </div>
+        {otpData.showMessage && (
+          <Box>
+            <Text>{otpData.message}</Text>
+            <form onSubmit={handleOTPSubmit}>
+              <FormControl id="otp" isRequired>
+                <FormLabel>Enter OTP</FormLabel>
+                <NumberInput value={otpData.otp} onChange={(valueString) => setOtpData({ ...otpData, otp: parseInt(valueString) })}>
+                  <NumberInputField />
+                </NumberInput>
+              </FormControl>
+              <Button type="submit" colorScheme="blue" mt={4}>Verify OTP</Button>
+            </form>
+          </Box>
+        )}
+      </Box>
+    </Center>
+  </Box>  
+  </ChakraProvider>  
   );
 };
 export default SignupVendorPage;

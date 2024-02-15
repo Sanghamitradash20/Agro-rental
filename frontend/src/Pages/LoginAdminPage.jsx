@@ -1,8 +1,23 @@
-// AdminLogin.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { motion } from "framer-motion"
+import {
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Input,
+  Button,
+  Center,
+  Box,
+  useMediaQuery,
+  Heading,
+  ChakraProvider
+} from '@chakra-ui/react';
 
 const AdminLogin = () => {
+  const [isMobile] = useMediaQuery("(max-width: 320px)");
+  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -30,35 +45,46 @@ const AdminLogin = () => {
   };
 
   return (
-    <div>
-      <h2>Admin Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-      {message && <p>{message}</p>}
-      
-    </div>
-  );
+    <ChakraProvider>
+    <Box minH="100vh" bgGradient="linear(green.500, blue.300, green.800)">
+    <Center minH="65vh">
+      <Box p="30" bgGradient="linear(green.500, blue.300, green.800)"
+        border="solid 1px black" w={isMobile ? "80%" : (isLargerThan768 ? "50%" : "100%")}
+        borderRadius={20}
+        boxShadow="0 0 20px darkgray, 0 0 20px black"
+      >
+        <Heading textAlign="center" fontSize="6xl">Admin Login</Heading>
+        <form onSubmit={handleSubmit} style={{ fontSize: '18px', fontFamily: 'Arial' }}>
+          <FormControl sx={{ marginBottom: "20px" }}>
+            <FormLabel htmlFor="username">Username:</FormLabel>
+            <Input
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+            />
+          </FormControl>
+          <FormControl sx={{ marginBottom: "20px" }}>
+            <FormLabel htmlFor="password">Password:</FormLabel>
+            <Input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            
+          </FormControl>
+          <Button type="submit" w="full" bg=" blue.300" variant='solid'>Login</Button>
+          
+        </form>
+        {message && <p>{message}</p>}
+      </Box>
+    </Center>
+  </Box>
+  </ChakraProvider>
+);
 };
 
 export default AdminLogin;
