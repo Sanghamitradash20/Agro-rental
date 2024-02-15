@@ -1,8 +1,9 @@
-// models/Vendor.js
+
+
 const mongoose = require('mongoose');
 
 const vendorSchema = new mongoose.Schema({
-  name: {
+  Name: {
     type: String,
     required: true
   },
@@ -26,9 +27,18 @@ const vendorSchema = new mongoose.Schema({
   pincode: {
     type: String,
     required: true
+  },
+  password:{
+    type:String,
+    required:true
   }
-});
+},{
+  versionKey: false, 
+  timestamps: true  
+}
+);
 
 const Vendor = mongoose.model('Vendor', vendorSchema);
 
 module.exports = Vendor;
+

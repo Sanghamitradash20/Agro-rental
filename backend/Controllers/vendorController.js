@@ -1,65 +1,122 @@
-// controllers/vendorController.js
-const Vendor = require('../Models/Vendor');
+const User = require("../Models/Vendor");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+require("dotenv").config();
+const accountSid = "AC3e4c15663fc32f95d8dad97f9e217e86";
+const authToken = "0570b72ca076f35a143be3f30e2d907e";
+const client = require("twilio")(accountSid, authToken);
+const JWT_KEY = process.env.JWT_KEY;
+
+function generateOTP() {
+  let digits = "0123456789";
+  let otp = "";
+  for (let i = 0; i < 4; i++) {
+    otp += digits[Math.floor(Math.random() * 10)];
+  }
+  return otp;
+}
+
+let tempOTP = "";
 
 const vendorController = {
   signup: async (req, res) => {
     try {
-      const {
-        name,
-        mobileNumber,
-        address,
-        nearestPoliceStation,
-        cityVillage,
-        pincode
-      } = req.body;
+      const newuser = ({ mobileNumber } = req.body);
 
-      // Check if the mobile number is already registered
-      const existingVendor = await Vendor.findOne({ mobileNumber });
-      if (existingVendor) {
-        return res.status(400).json({ message: 'Mobile number already exists' });
+      const existingUser = await User.findOne({ mobileNumber });
+      if (existingUser) {
+        return res.status(400).json({
+          msg: "User with the same number already exists! Please check and try again",
+        });
       }
+      tempOTP = generateOTP();
 
-      // Create a new vendor object
-      const newVendor = new Vendor({
-        name,
-        mobileNumber,
-        address,
-        nearestPoliceStation,
-        cityVillage,
-        pincode
+      await client.messages.create({
+        body: `Your OTP verification for user ${mobileNumber} is ${tempOTP}`,
+        messagingServiceSid: "MG69b0fe8c3a72b8c8e60e48bd0aaee99d",
+        to: mobileNumber,
       });
 
-      // Save the vendor to the database
-      await newVendor.save();
-
-      res.status(201).json({ message: 'Vendor signed up successfully' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal server error' });
+      res.status(200).json({ msg: "OTP Sent" });
+    } catch (e) {
+      console.error(e);
+      res.status(500).json({ error: e.message });
     }
   },
+
+  verifyOTP: async (req, res) => {
+    try {
+      const { otp: userOTP, mobileNumber, password } = req.body;
+      //  bcrypt.hash(pass, 12, async (err, hash) => {
+      //   if (err) {
+      //     res.send({ msg: "something went wrong please try again" });
+      //   } else {
+      //     encryp=hash;
+      //   }
+      // });
+      if (userOTP === tempOTP) {
+        const newUser = new User({
+          Name: req.body.Name,
+          mobileNumber: req.body.mobileNumber,
+          address: req.body.address,
+          nearestPoliceStation: req.body.nearestPoliceStation,
+          cityVillage: req.body.cityVillage,
+          pincode: req.body.pincode,
+          password: await bcrypt.hash(password, 12)
+        });
+        // const token = jwt.sign({ id: newUser._id }, JWT_KEY);
+        const vendorId=newUser._id;
+        await newUser.save();
+        return res.status(200).json({ bool: "true", vendorId });
+      } else {
+        tempOTP = "";
+        return res.status(400).json({ bool: "falseO" }); //handle pending
+      }
+    } catch (e) {
+      console.error(e);
+      return res.status(500).json({ bool: "falseM" }); //handle pending
+    }
+  },
+
   login: async (req, res) => {
     try {
       const { mobileNumber, password } = req.body;
-
-      // Find the vendor by mobile number
-      const vendor = await Vendor.findOne({ mobileNumber });
-      if (!vendor) {
-        return res.status(404).json({ message: 'Vendor not found' });
+      const user = await User.findOne({ mobileNumber });
+      if (!user) {
+        return res.status(404).json({ msg: "User not found" });
       }
-
-      // Check if the password matches
-      if (vendor.password !== password) {
-        return res.status(401).json({ message: 'Invalid password' });
+      bcrypt.compare(password, user.password, (err, result) => {
+        if (err) {
+          return res.status(500).json({ msg: "Server error" });
+        }
+        if (result) {
+          // const token = jwt.sign({ userID: user._id }, JWT_KEY);
+          const id=user._id;
+          return res.status(200).json({ msg: "true", id }); 
+        } else {
+          return res.status(401).json({ msg: "Wrong credentials" });
+        }
+      });
+    } catch (e) {
+      console.error(e);
+      return res.status(500).json({ msg: "Server error" });
+    }
+  },
+  details: async (req, res) => {
+    try {
+      const { vendorID } = req.params;
+      const details = await User.findOne({ _id: vendorID }); 
+      if (details) {
+        res.status(200).json({ details });
+      } else {
+        res.status(404).json({ msg: 'Details not found' });
       }
-
-      // If everything is correct, send a success message
-      res.status(200).json({ message: 'Login successful', vendor });
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal server error' });
+      console.error('Error fetching details:', error.message);
+      res.status(500).json({ msg: 'Internal server error' });
     }
   }
+  
 };
 
 module.exports = vendorController;

@@ -7,6 +7,7 @@ const farmerController = require('../Controllers/farmerController');
 router.post('/signup', farmerController.signup);
 router.post('/login', farmerController.login);
 router.post('/forgot-pin', farmerController.forgotPIN);
-
+// router.get('./details',farmerController.details);
+router.get('/details/:vendorID', farmerController.details);
 
 module.exports = router;
