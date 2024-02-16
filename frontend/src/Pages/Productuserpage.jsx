@@ -16,7 +16,7 @@ import tractor from "../images/tractor.png";
 import cult from "../images/cult.png";
 import { useParams } from "react-router-dom";
 import baler from "../images/baler.jpg";
-import Tractor from "../images/Tractor.png";
+import Tractor from "../images/tractor.png";
 import rotavtor from "../images/rotavtor.png";
 import thresher from "../images/thresher.jpg";
 import cultivator1 from "../images/cultivator1.png";
