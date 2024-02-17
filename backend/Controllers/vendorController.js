@@ -2,8 +2,8 @@ const User = require("../Models/Vendor");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
-const accountSid = "AC3e4c15663fc32f95d8dad97f9e217e86";
-const authToken = "0570b72ca076f35a143be3f30e2d907e";
+const accountSid = "ACff20a603213b4ced2b0a8567fae674a3";
+const authToken = "7ecac634d2e494b59e9762f7cce54b05";
 const client = require("twilio")(accountSid, authToken);
 const JWT_KEY = process.env.JWT_KEY;
 
@@ -33,7 +33,7 @@ const vendorController = {
 
       await client.messages.create({
         body: `Your OTP verification for user ${mobileNumber} is ${tempOTP}`,
-        messagingServiceSid: "MG69b0fe8c3a72b8c8e60e48bd0aaee99d",
+        messagingServiceSid: "MG00fceb240df33a1852d53184830ef11b",
         to: mobileNumber,
       });
 

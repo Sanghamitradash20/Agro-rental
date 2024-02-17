@@ -125,31 +125,31 @@ const SignupVendorPage = () => {
         <form onSubmit={handleSubmit}>
           <FormControl id="name" isRequired>
             <FormLabel>Name:</FormLabel>
-            <Input type="text" value={formData.name} onChange={handleChange} />
+            <Input type="text" value={formData.Name} onChange={handleChange} name="Name"/>
           </FormControl>
           <FormControl id="mobileNumber" isRequired>
             <FormLabel>Mobile Number:</FormLabel>
-            <Input type="number" value={formData.mobileNumber} onChange={handleChange} />
+            <Input type="number" value={formData.mobileNumber} onChange={handleChange} name="mobileNumber"/>
           </FormControl>
           <FormControl id="address" isRequired>
             <FormLabel>Address:</FormLabel>
-            <Input type="text" value={formData.address} onChange={handleChange} />
+            <Input type="text" value={formData.address} onChange={handleChange} name="address"/>
           </FormControl>
           <FormControl id="nearestPoliceStation" isRequired>
             <FormLabel>Nearest Police Station:</FormLabel>
-            <Input type="text" value={formData.nearestPoliceStation} onChange={handleChange} />
+            <Input type="text" value={formData.nearestPoliceStation} onChange={handleChange} name="nearestPoliceStation"/>
           </FormControl>
           <FormControl id="cityVillage" isRequired>
             <FormLabel>City/Village:</FormLabel>
-            <Input type="text" value={formData.cityVillage} onChange={handleChange} />
+            <Input type="text" value={formData.cityVillage} onChange={handleChange} name="cityVillage"/>
           </FormControl>
           <FormControl id="pincode" isRequired>
             <FormLabel>Pincode:</FormLabel>
-            <Input type="number" value={formData.pincode} onChange={handleChange} />
+            <Input type="number" value={formData.pincode} onChange={handleChange} name="pincode"/>
           </FormControl>
           <FormControl id="password" isRequired>
             <FormLabel>Password:</FormLabel>
-            <Input type="password" value={formData.password} onChange={handleChange} />
+            <Input type="password" value={formData.password} onChange={handleChange} name="password"/>
           </FormControl>
           <Button colorScheme="blue" type="submit" w="full" isDisabled={isSendingOTP || timer > 0}>
             {isSendingOTP ? 'Sending OTP...' : timer > 0 ? `Retry in ${timer}s` : 'Send OTP'}
