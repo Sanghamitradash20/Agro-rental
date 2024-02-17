@@ -60,3 +60,52 @@ const ProductListByType = () => {
 };
 
 export default ProductListByType;
+
+
+
+// // ProductListByType.js  MONGODB
+
+// import React, { useEffect, useState } from 'react';
+// import { Link, useParams } from 'react-router-dom';
+// import { Box, Grid, Heading, Image, Text } from '@chakra-ui/react';
+// import axios from 'axios';
+
+// const ProductListByType = () => {
+//   const { type } = useParams();
+//   const [products, setProducts] = useState([]);
+
+//   useEffect(() => {
+//     const fetchProducts = async () => {
+//       try {
+//         const response = await axios.get(`http://localhost:5000/products/${type}`);
+//         setProducts(response.data);
+//       } catch (error) {
+//         console.error(error);
+//       }
+//     };
+
+//     fetchProducts();
+//   }, [type]);
+
+//   return (
+//     <Box>
+//       <Heading size="lg" mb="4">{type}</Heading>
+//       <Grid templateColumns="repeat(auto-fill, minmax(200px, 1fr))" gap="4">
+//         {products.map(product => (
+//           <Box key={product._id} maxW="200px" borderWidth="1px" borderRadius="lg" overflow="hidden" height="350px">
+//             <Link to={`/${product.type}/${product._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+//               <Image src={product.image} alt={product.name} height="200px" objectFit="cover" />
+//               <Box p="4">
+//                 <Heading size="sm" mb="2">{product.name}</Heading>
+//                 <Text fontSize="sm" fontWeight="bold">Price: ₹{product.price}</Text>
+//               </Box>
+//             </Link>
+//           </Box>
+//         ))}
+//       </Grid>
+//     </Box>
+//   );
+// };
+
+// export default ProductListByType;
+
