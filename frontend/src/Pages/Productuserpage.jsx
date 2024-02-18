@@ -16,7 +16,7 @@ import tractor from "../images/tractor.png";
 import cult from "../images/cult.png";
 import { useParams } from "react-router-dom";
 import baler from "../images/baler.jpg";
-import Tractor from "../images/Tractor.png";
+import Tractor from "../images/tractor.png";
 import rotavtor from "../images/rotavtor.png";
 import thresher from "../images/thresher.jpg";
 import cultivator1 from "../images/cultivator1.png";
@@ -66,25 +66,23 @@ const ProductPage = () => {
   // "2xl": "1536px",
   return (
     <div>
-      <Navbar />
-      <ChakraProvider>
         <Box className="image" >
           <Stack direction="column" spacing={{ base: 4, md: 8 }} width={"100%"}>
             <Box className="Pheader">
-              <ChakraProvider>
+              
                 <Text
                   fontSize={{ sm: "20px", md: "40px", lg: "50px" }}
                   marginTop={{ sm: "20px", md: "50px", lg: "80px" }}
                 >
                   AGRO RENTAL
                 </Text>
-              </ChakraProvider>
+              
             </Box>
             <Box className="parent">
               <Box className="tractor">
                 <img src={tractor} id="tract" />
               </Box>
-              <ChakraProvider>
+             
                 <Box className="txt">
                   <Text fontSize={{ sm: "20px", md: "40px", lg: "40px" }}>
                     Vendor to Farmer
@@ -93,7 +91,7 @@ const ProductPage = () => {
                     Equipment Rental Service
                   </Text>
                 </Box>
-              </ChakraProvider>
+              
               <Box className="cult">
                 <img src={cult} id="cult" />
               </Box>
@@ -158,7 +156,7 @@ const ProductPage = () => {
             ))}
           </Grid>
         </Box>
-      </ChakraProvider>
+      
     </div>
   );
 };
