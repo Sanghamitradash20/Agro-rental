@@ -1,0 +1,235 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Harry Potter: Hogwarts History",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+        "id": 2,
+        "name": "Harry Potter: Hogwarts History",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+          "id": 3,
+          "name": "Harry Potter: Hogwarts History",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+          "id": 4,
+          "name": "Harry Potter: Hogwarts History",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      } ,
+      {
+        "id": 5,
+        "name": "Harry Potter: Hogwarts History",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+        "id": 6,
+        "name": "Star Wars: Join The Resistance",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+          "id": 7,
+          "name": "Solids: Pink",
+          "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+          "id": 8,
+          "name": "Courage: Face",
+          "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+        "id": 9,
+        "name": "Naruto: Uzumaki Set",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+          "id": 10,
+          "name": "Solids: Denim Blue & Navy",
+          "gender": "Mens",
+          "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+          "id": 11,
+          "name": "Black Panther: T'Challa 10",
+          "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+        "id": 12,
+        "name": "Hulk: Incredible",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+        "id": 13,
+        "name": "Solids: Dark Blue (Slim Fit)",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+        "id": 14,
+        "name": "Tom And Jerry: Don't Wake Me Up",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+        "id": 15,
+        "name": "Batman: Chibi",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+        "id": 16,
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+        "id": 17,
+        "name": "Superman: Man of Steel",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+        "id": 18,
+        "name": "Superman: Man of Steel",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      },
+      {
+        "id": 19,
+        "name": "Superman: Man of Steel",
+        "vendorid": "Mens",
+        "type":"tractor",
+        "brand": "t-shirt",
+        "price": 19.99,
+        "image": "https://prod-img.thesouledstore.com/public/theSoul/uploads/catalog/product/1688206203_2652285.jpg?format=webp&w=480&dpr=1.3",
+        "description": "This is product 1",
+        "model":"Premium Heavy Gauge Fabric,100% Cotton ,Country of Origin: India (and proud),Manufactured & Sold By:The Souled Store Pvt. Ltd.224, Tantia Jogani Industrial Premisesconnect@thesouledstore.com",
+        "quantity": 2
+      }
+      
+      
+    ]
+  }
+  

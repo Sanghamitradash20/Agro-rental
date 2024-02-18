@@ -12,4 +12,8 @@ export const LanguageProvider = ({ children }) => {
   );
 };
 
+<<<<<<< HEAD
 export const useLanguage = () => useContext(LanguageContext);
+=======
+export const useLanguage = () => useContext(LanguageContext);
+>>>>>>> 37b8723d7abe90e29a27f091814dc7e69dae7422

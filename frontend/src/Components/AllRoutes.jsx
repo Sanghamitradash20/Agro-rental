@@ -8,8 +8,11 @@ import LoginVendorPage from '../Pages/LoginVendorPage';
 import SignupFarmerPage from '../Pages/SignupFarmerPage';
 import SignupVendorPage from '../Pages/SignupVendorPage';
 import Productuserpage from '../Pages/Productuserpage';
-import Productvendorpage from '../Pages/Productvendorpage'
-import VendorDashboardPage from '../Pages/VendorDashboardPage'
+import Productvendorpage from '../Pages/Productvendorpage';
+import VendorDashboardPage from '../Pages/VendorDashboardPage';
+import ProductListByType from '../Pages/ProductListByType';
+import ProductDetails from '../Pages/ProductDetails';
+import CartPage from '../Pages/CartPage';
 
 
 const AllRoutes = () => {
@@ -22,6 +25,9 @@ const AllRoutes = () => {
       <Route path="/signup/farmer" element={<SignupFarmerPage/>}></Route>
       <Route path="/signup/vendor" element={<SignupVendorPage/>}></Route>
       <Route path="/vendor/dashboard/:vendorID" element={<Productuserpage/>}></Route>
+      <Route path="/:type" element={<ProductListByType/>}></Route>
+      <Route path="/:type/:id" element={<ProductDetails/>}></Route>
+      <Route path='/cart' element={<CartPage/>}></Route> 
       {/* <Route path="/vendor/dashboard/:vendorID" element={<Productvendorpage/>}></Route> */}
 
     </Routes>
