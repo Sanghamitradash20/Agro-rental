@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const accountSid = "AC3e4c15663fc32f95d8dad97f9e217e86";
-const authToken = "0570b72ca076f35a143be3f30e2d907e";
+const authToken = "bae5c318d03bff6dc7458e907b39c549";
 const client = require("twilio")(accountSid, authToken);
 const JWT_KEY = process.env.JWT_KEY;
 
@@ -47,13 +47,6 @@ const vendorController = {
   verifyOTP: async (req, res) => {
     try {
       const { otp: userOTP, mobileNumber, password } = req.body;
-      //  bcrypt.hash(pass, 12, async (err, hash) => {
-      //   if (err) {
-      //     res.send({ msg: "something went wrong please try again" });
-      //   } else {
-      //     encryp=hash;
-      //   }
-      // });
       if (userOTP === tempOTP) {
         const newUser = new User({
           Name: req.body.Name,
@@ -62,19 +55,20 @@ const vendorController = {
           nearestPoliceStation: req.body.nearestPoliceStation,
           cityVillage: req.body.cityVillage,
           pincode: req.body.pincode,
-          password: await bcrypt.hash(password, 12)
+          password: await bcrypt.hash(password, 12),
         });
-        // const token = jwt.sign({ id: newUser._id }, JWT_KEY);
-        const vendorId=newUser._id;
+        const vendorId = newUser._id;
         await newUser.save();
-        return res.status(200).json({ bool: "true", vendorId });
-      } else {
         tempOTP = "";
-        return res.status(400).json({ bool: "falseO" }); //handle pending
+        return res.status(200).json({ success: true, vendorId });
+      } else {
+        return res.status(400).json({ success: false, message: "Invalid OTP",otp:tempOTP,uotp:userOTP });
       }
+      tempOTP = "";
     } catch (e) {
+      tempOTP = "";
       console.error(e);
-      return res.status(500).json({ bool: "falseM" }); //handle pending
+      return res.status(500).json({ success: false, message: "Server error" });
     }
   },
 
@@ -91,8 +85,8 @@ const vendorController = {
         }
         if (result) {
           // const token = jwt.sign({ userID: user._id }, JWT_KEY);
-          const id=user._id;
-          return res.status(200).json({ msg: "true", id }); 
+          const id = user._id;
+          return res.status(200).json({ msg: "true", id });
         } else {
           return res.status(401).json({ msg: "Wrong credentials" });
         }
@@ -105,18 +99,17 @@ const vendorController = {
   details: async (req, res) => {
     try {
       const { vendorID } = req.params;
-      const details = await User.findOne({ _id: vendorID }); 
+      const details = await User.findOne({ _id: vendorID });
       if (details) {
         res.status(200).json({ details });
       } else {
-        res.status(404).json({ msg: 'Details not found' });
+        res.status(404).json({ msg: "Details not found" });
       }
     } catch (error) {
-      console.error('Error fetching details:', error.message);
-      res.status(500).json({ msg: 'Internal server error' });
+      console.error("Error fetching details:", error.message);
+      res.status(500).json({ msg: "Internal server error" });
     }
-  }
-  
+  },
 };
 
 module.exports = vendorController;

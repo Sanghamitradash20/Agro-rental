@@ -22,8 +22,8 @@ import thresher from "../images/thresher.jpg";
 import cultivator1 from "../images/cultivator1.png";
 import digger from "../images/digger.png";
 const ProductPage = () => {
-  const { vendorID } = useParams();
-  console.log(vendorID);
+  const { farmerId } = useParams();
+  console.log(farmerId);
   const navigate = useNavigate();
   const user = {
     Name: "John Doe",
@@ -35,7 +35,7 @@ const ProductPage = () => {
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/farmers/details/${vendorID}`
+        `http://localhost:5000/api/farmers/details/${farmerId}`
       );
       setDetails(response.data.details);
       console.log(response);
@@ -45,7 +45,7 @@ const ProductPage = () => {
   };
   useEffect(() => {
     getdetails();
-  }, [vendorID]);
+  }, [farmerId]);
   const products = [
     { id: 1, name: "Rotavtor", price: "$10", image: rotavtor },
     { id: 2, name: "Digger", price: "$20", image: digger },

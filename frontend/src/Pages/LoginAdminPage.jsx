@@ -12,7 +12,8 @@ import {
   Box,
   useMediaQuery,
   Heading,
-  ChakraProvider
+  ChakraProvider,
+  ThemeProvider
 } from '@chakra-ui/react';
 
 const AdminLogin = () => {
@@ -46,6 +47,7 @@ const AdminLogin = () => {
 
   return (
     <ChakraProvider>
+      {/* <ThemeProvider> */}
     <Box minH="100vh" bgGradient="linear(green.500, blue.300, green.800)">
     <Center minH="65vh">
       <Box p="30" bgGradient="linear(green.500, blue.300, green.800)"
@@ -83,6 +85,7 @@ const AdminLogin = () => {
       </Box>
     </Center>
   </Box>
+  {/* </ThemeProvider> */}
   </ChakraProvider>
 );
 };

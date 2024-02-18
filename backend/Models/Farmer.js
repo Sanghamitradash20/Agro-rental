@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 
 const farmerSchema = new mongoose.Schema({
-  name: {
+  Name: {
     type: String,
     required: true
   },
@@ -28,11 +28,9 @@ const farmerSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  pin: {
+  password: {
     type: String,
     required: true,
-    minlength: 4,
-    maxlength: 4
 }
 
 });

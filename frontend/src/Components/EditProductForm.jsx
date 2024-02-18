@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
 
-const EditProductForm = ({ product, onSave, onCancel }) => {
+import React, { useState, useEffect } from 'react';
+import {
+  TextField,
+  Button,
+  Container,
+  Grid,
+  Typography,
+} from '@material-ui/core';
+
+const EditProductForm = ({ product, onSave, onCancel, onDelete }) => {
   const [editedProduct, setEditedProduct] = useState({ ...product });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEditedProduct(prevProduct => ({
-      ...prevProduct,
-      [name]: value
-    }));
+    setEditedProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
   };
 
   const handleSubmit = (e) => {
@@ -20,44 +25,89 @@ const EditProductForm = ({ product, onSave, onCancel }) => {
     onCancel(); // Call the onCancel function passed from the parent component
   };
 
+  const handleSaveEdit = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/product/${editedProduct._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editedProduct),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to update product');
+      }
+      console.log('Product updated successfully:', editedProduct);
+      onSave(editedProduct);
+    } catch (error) {
+      console.error('Error updating product:', error);
+    }
+  };
+
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/product/${product._id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete product');
+      }
+      onDelete(product);
+      console.log('Product deleted successfully:', product);
+    } catch (error) {
+      console.error('Error deleting product:', error);
+    }
+  };
+
   return (
-    <div className="edit-product-form">
-      <h3>Edit Product</h3>
+    <Container maxWidth="sm">
+      <Typography variant="h4" gutterBottom>
+        Edit Product
+      </Typography>
       <form onSubmit={handleSubmit}>
-        <label>
-          Image URL:
-          <input type="text" name="imageUrl" value={editedProduct.imageUrl} onChange={handleChange} required />
-        </label>
-        <label>
-          Type:
-          <input type="text" name="type" value={editedProduct.type} onChange={handleChange} required />
-        </label>
-        <label>
-          Brand:
-          <input type="text" name="brand" value={editedProduct.brand} onChange={handleChange} required />
-        </label>
-        <label>
-          Model:
-          <input type="text" name="model" value={editedProduct.model} onChange={handleChange} required />
-        </label>
-        <label>
-          Description:
-          <textarea name="description" value={editedProduct.description} onChange={handleChange} required />
-        </label>
-        <label>
-          Price:
-          <input type="number" name="price" value={editedProduct.price} onChange={handleChange} required />
-        </label>
-        <label>
-          Quantity:
-          <input type="number" name="quantity" value={editedProduct.quantity} onChange={handleChange} required />
-        </label>
-        <div className="button-container">
-        <button type="submit">Save Changes</button>
-          <button type="button" onClick={handleCancel}>Cancel</button> 
-        </div>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <TextField
+              label="Image URL"
+              fullWidth
+              name="imageUrl"
+              value={editedProduct.imageUrl}
+              onChange={handleChange}
+            />
+          </Grid>
+          {/* Add other fields here */}
+          <Grid item xs={12}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              onClick={handleSaveEdit}
+            >
+              Save Changes
+            </Button>
+            <Button
+              type="button"
+              variant="outlined"
+              color="secondary"
+              fullWidth
+              onClick={handleCancel}
+            >
+              Cancel
+            </Button>
+            <Button
+              type="button"
+              variant="contained"
+              color="secondary"
+              fullWidth
+              onClick={handleDelete}
+            >
+              Delete Product
+            </Button>
+          </Grid>
+        </Grid>
       </form>
-    </div>
+    </Container>
   );
 };
 
