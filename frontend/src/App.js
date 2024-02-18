@@ -1,8 +1,11 @@
 // App.js
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 
 import AllRoutes from "./Components/AllRoutes";
 import { ChakraProvider } from "@chakra-ui/react";
+
+
+
 // const App = () => {
 //   return (
 //     <div>
@@ -35,7 +38,7 @@ function useGoogleTranslateScript() {
   }, []);
 
   // return (
-    
+
   //   <div>
   //     <div id="google_element"></div>
   //     <AllRoutes />
@@ -46,16 +49,14 @@ const App = () => {
   useGoogleTranslateScript();
 
   return (
-    
-    <ChakraProvider>
-      <LanguageProvider>
-      <div>
-      <div id="google_element"></div>
-      <AllRoutes />
-  </div></LanguageProvider>
 
-    </ChakraProvider>
-    
+ 
+      <LanguageProvider>
+        <div>
+          <div id="google_element"></div>
+          <AllRoutes />
+        </div></LanguageProvider>
+
   );
 };
 

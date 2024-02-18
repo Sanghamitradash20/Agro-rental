@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from "framer-motion"
-import { Button, Heading, Box, useMediaQuery,Center } from '@chakra-ui/react';
+import { Button, Heading, Box, useMediaQuery,Center,ChakraProvider } from '@chakra-ui/react';
 
 const LandingPage = () => {
   const [isMobile] = useMediaQuery("(max-width: 320px)");
@@ -13,6 +13,7 @@ const LandingPage = () => {
     backgroundPosition: 'center',
   };
   return (
+    <ChakraProvider>
     <Box style={backgroundStyle} minH="100vh">
       <Heading textAlign="center" fontSize="6xl" padding="50px 50px 10px 50px">Agro Rental</Heading>
       <Heading textAlign="center" fontSize="md" fontStyle="italic">FEELS REAL AND AUTHENTIC</Heading>
@@ -31,6 +32,7 @@ const LandingPage = () => {
       </Box>
       </Center>
     </Box>
+    </ChakraProvider>
   );
 };
 
