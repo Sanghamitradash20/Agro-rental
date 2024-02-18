@@ -6,6 +6,7 @@ const farmerRoutes = require('./Routes/farmerRoutes');
 const vendorRoutes = require('./Routes/vedorRoutes');
 const adminRoutes = require('./Routes/adminRoutes');
 const productRoutes = require('./Routes/productRoutes');
+const cartRoutes = require('./Routes/cartRoutes'); 
 const app = express();
 app.use(cors());
 require("dotenv").config();
@@ -30,6 +31,7 @@ app.use('/api/farmers', farmerRoutes);
 app.use('/api/vendors', vendorRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/product', productRoutes);
+app.use('/api/cart', cartRoutes);
 
 
 app.listen(PORT, () => {
