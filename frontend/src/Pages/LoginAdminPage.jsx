@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { motion } from "framer-motion"
+import { Link } from 'react-router-dom';
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Input,
   Button,
-  Center,
   Box,
-  useMediaQuery,
+  Center,
   Heading,
-  ChakraProvider
+  Text,
 } from '@chakra-ui/react';
 
+// Import your image
+import backgroundImage from '../images/agbg4.png';
+
 const AdminLogin = () => {
-  const [isMobile] = useMediaQuery("(max-width: 320px)");
-  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   const [formData, setFormData] = useState({
     username: '',
-    password: ''
+    password: '',
   });
   const [message, setMessage] = useState('');
 
@@ -28,7 +26,7 @@ const AdminLogin = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -45,46 +43,74 @@ const AdminLogin = () => {
   };
 
   return (
-    <ChakraProvider>
-    <Box minH="100vh" bgGradient="linear(green.500, blue.300, green.800)">
-    <Center minH="65vh">
-      <Box p="30" bgGradient="linear(green.500, blue.300, green.800)"
-        border="solid 1px black" w={isMobile ? "80%" : (isLargerThan768 ? "50%" : "100%")}
-        borderRadius={20}
-        boxShadow="0 0 20px darkgray, 0 0 20px black"
-      >
-        <Heading textAlign="center" fontSize="6xl">Admin Login</Heading>
-        <form onSubmit={handleSubmit} style={{ fontSize: '18px', fontFamily: 'Arial' }}>
-          <FormControl sx={{ marginBottom: "20px" }}>
-            <FormLabel htmlFor="username">Username:</FormLabel>
-            <Input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-            />
-          </FormControl>
-          <FormControl sx={{ marginBottom: "20px" }}>
-            <FormLabel htmlFor="password">Password:</FormLabel>
-            <Input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-            />
-            
-          </FormControl>
-          <Button type="submit" w="full" bg=" blue.300" variant='solid'>Login</Button>
-          
-        </form>
-        {message && <p>{message}</p>}
-      </Box>
-    </Center>
-  </Box>
-  </ChakraProvider>
-);
+    <Box
+      minH="100vh"
+      bgGradient="linear(to-b, #D4E7C5,#BFD8AF,#99BC85)"
+      backgroundImage={`url(${backgroundImage})`}
+      backgroundSize="cover"
+      backgroundPosition="center"
+      position="relative"
+      overflow="hidden"
+    >
+      <Box
+        position="absolute"
+        top="0"
+        left="0"
+        right="0"
+        bottom="0"
+        bgGradient="linear(to-b, #D4E7C5,#BFD8AF,#99BC85)"
+        opacity="0.75" // Adjust the opacity for the desired blur effect
+      />
+      <Center minH="65vh">
+        <Box
+          p="30"
+          w="100%"
+          maxW="400px"
+          borderRadius={50}
+          boxShadow="0 0 20px darkgray, 0 0 20px black"
+          position="relative"
+          zIndex="1"
+        >
+          <Heading textAlign="center" fontSize="3xl" mb="6">
+            Admin Login
+          </Heading>
+          <form onSubmit={handleSubmit} style={{ fontSize: '18px', fontFamily: 'Arial' }}>
+            <FormControl sx={{ marginBottom: '20px' }}>
+              <FormLabel htmlFor="username">Username:</FormLabel>
+              <Input
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                bg="white"
+                color="black"
+              />
+            </FormControl>
+            <FormControl sx={{ marginBottom: '20px' }}>
+              <FormLabel htmlFor="password">Password:</FormLabel>
+              <Input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                bg="white"
+                color="black"
+              />
+            </FormControl>
+            <Button bgGradient="linear(yellow.200, green.300, green.400)" type="submit" position="absolute" right="40%">
+              Login
+            </Button>
+          </form><br />
+          <Text textAlign="center" mt="4">
+            Forgot your password?<Link to="/forgot-password" style={{ color: 'blue' }}>Click here</Link> to reset it.
+          </Text>
+          {message && <p>{message}</p>}
+        </Box>
+      </Center>
+    </Box>
+  );
 };
 
 export default AdminLogin;
