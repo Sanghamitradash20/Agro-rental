@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import {axios} from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { FormControl, FormLabel, Input, Button, Box, Heading, Center, ChakraProvider, ThemeProvider } from '@chakra-ui/react';
 

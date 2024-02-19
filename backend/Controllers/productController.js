@@ -1,6 +1,6 @@
 const Product = require('../Models/Product');
+const url = require('url');
 
-// Controller function to create a new product
 const createProduct = async (req, res) => {
   const {
     vendorId,
@@ -14,7 +14,6 @@ const createProduct = async (req, res) => {
   } = req.body;
 
   try {
-    // Create a new product instance
     const product = new Product({
       vendorId,
       imageUrl,
@@ -26,7 +25,6 @@ const createProduct = async (req, res) => {
       quantity
     });
 
-    // Save the product to the database
     await product.save();
 
     res.status(201).json({ success: true, data: product });
@@ -36,7 +34,6 @@ const createProduct = async (req, res) => {
   }
 };
 
-// Controller function to edit product details
 const editProduct = async (req, res) => {
   const productId = req.params.id;
   const updates = req.body;
@@ -54,8 +51,9 @@ const editProduct = async (req, res) => {
     res.status(200).json({ success: true, data: product });
   } catch (error) {
     console.error('Error updating product:', error);
-    res.status(500).json({ success: false, error: 'Server error' });
+    res.status(500).json({ success: false, error: error.message });
   }
+  
 };
 
 // Controller function to delete a product
