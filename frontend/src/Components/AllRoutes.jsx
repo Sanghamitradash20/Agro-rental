@@ -12,8 +12,9 @@ import Productvendorpage from '../Pages/Productvendorpage'
 // import VendorDashboardPage from '../Pages/VendorDashboardPage'
 import FarmerForgotPassword from "../Pages/FarmerForgotPassword";
 import AddProduct from "../Pages/AddProduct";
-
-
+import CartPage from '../Pages/CartPage';
+import ProductDetails from '../Pages/ProductDetails';
+import ProductListByType from '../Pages/ProductListByType';
 const AllRoutes = () => {
   return (
     <Routes>
@@ -27,6 +28,9 @@ const AllRoutes = () => {
       <Route path="/forgot-password" element={<FarmerForgotPassword/>}></Route>
       <Route path="/vendor/dashboard/:vendorID" element={<Productvendorpage/>}></Route>
       <Route path="/vendor/addproduct/:vendorID" element={<AddProduct/>}></Route>
+      <Route path='/cart' element={<CartPage/>}></Route> 
+      <Route path="/:type/:id" element={<ProductDetails/>}></Route>
+      <Route path="/:type" element={<ProductListByType/>}></Route>
     </Routes>
   );
 };
