@@ -104,6 +104,7 @@
 
 //     fetchProducts();
 //   }, [type]);
+// const responsiveButtonWidth = useBreakpointValue({ base: "100px", sm: "200px", md: "100px" })  
 
 //   return (
 //     <Box
@@ -326,14 +327,14 @@
 
 import React from 'react';
 import { Box, Flex, Image, Text, Button,useBreakpointValue } from '@chakra-ui/react';
-import { FaShoppingCart } from 'react-icons/fa';
+// import { FaShoppingCart } from 'react-icons/fa';
 
 const ProductCard = ({ product }) => {
   const handleBuyNow = () => {
     // Logic for Buy Now action
     console.log(`Buy Now clicked for ${product.name}`);
   };
-  const responsiveButtonWidth = useBreakpointValue({ base: "100px", sm: "200px", md: "100px" })
+  // const responsiveButtonWidth = useBreakpointValue({ base: "100px", sm: "200px", md: "100px" })
 
   return (
     <Box
@@ -368,9 +369,9 @@ const ProductCard = ({ product }) => {
           <Button onClick={handleBuyNow} colorScheme="green">
             Rent now
           </Button>
-          <Button width="1000px" maxWidth={responsiveButtonWidth} marginY={5} leftIcon={<FaShoppingCart />}>
+          { /*<Button width="1000px" maxWidth={responsiveButtonWidth} marginY={5} leftIcon={<FaShoppingCart />}> */}
                     
-                </Button>
+                {/* </Button> */}
 
         </Flex>
       </Box>
@@ -437,6 +438,38 @@ const ProductsPage = () => {
       unit: 'unit',
     },
     
+    {
+      id: 2,
+      name: 'Product 2',
+      category: 'Category 2',
+      image: 'https://via.placeholder.com/150',
+      price: 149.99,
+      unit: 'unit',
+    },
+    {
+      id: 2,
+      name: 'Product 2',
+      category: 'Category 2',
+      image: 'https://via.placeholder.com/150',
+      price: 149.99,
+      unit: 'unit',
+    },
+    {
+      id: 2,
+      name: 'Product 2',
+      category: 'Category 2',
+      image: 'https://via.placeholder.com/150',
+      price: 149.99,
+      unit: 'unit',
+    },
+    {
+      id: 2,
+      name: 'Product 2',
+      category: 'Category 2',
+      image: 'https://via.placeholder.com/150',
+      price: 149.99,
+      unit: 'unit',
+    },
     {
       id: 2,
       name: 'Product 2',
