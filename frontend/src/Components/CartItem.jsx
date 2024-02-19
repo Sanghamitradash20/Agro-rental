@@ -91,7 +91,7 @@
 
 // CartItem.js
 import React from 'react';
-import { Box, Image, Text, Button } from '@chakra-ui/react';
+import { Box, Image, Text, Button ,ChakraProvider} from '@chakra-ui/react';
 import { useCart } from '../Contexts/CartContext';
 
 const CartItem = ({ item }) => {
@@ -104,6 +104,7 @@ const CartItem = ({ item }) => {
   };
 
   return (
+    <ChakraProvider>
     <Box display="flex" alignItems="center" mb="20px">
       <Image src={product.image} alt={product.name} boxSize="100px" objectFit="cover" mr="10px" />
       <Box flex="1">
@@ -121,6 +122,7 @@ const CartItem = ({ item }) => {
         </Button>
       </Box>
     </Box>
+    </ChakraProvider>
   );
 };
 

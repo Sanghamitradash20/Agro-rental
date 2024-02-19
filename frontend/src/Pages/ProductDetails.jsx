@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link} from 'react-router-dom';
-import { Box, Heading, Image, Text, Button } from '@chakra-ui/react';
+import { Box, Heading, Image, Text, Button,ChakraProvider } from '@chakra-ui/react';
 import axios from 'axios';
 
 const ProductDetails = () => {
@@ -47,6 +47,7 @@ const ProductDetails = () => {
   }
 
   return (
+    <ChakraProvider>
     <Box>
       {product && (
         <>
@@ -59,6 +60,7 @@ const ProductDetails = () => {
       )}
       <Link to="/cart">Go to Cart</Link>
     </Box>
+    </ChakraProvider>
   );
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Heading, Box, useMediaQuery, Center, Icon, Text } from '@chakra-ui/react';
+import { Button, Heading, Box, useMediaQuery, Center, Icon, Text,ChakraProvider } from '@chakra-ui/react';
 import { FaUser } from 'react-icons/fa'; // Import the user icon
 import { MdBuild } from "react-icons/md";
 import backgroundImage from '../images/agbg.jpg'; // Import the background image
@@ -43,6 +43,7 @@ const LandingPage = () => {
   };
 
   return (
+    <ChakraProvider>
     <Box minH="90vh" pt="70" style={containerStyle}>
       <Box style={backgroundStyle} />
       <Box style={blurOverlayStyle} />
@@ -74,6 +75,7 @@ const LandingPage = () => {
         </Link>
       </Box>
     </Box>
+    </ChakraProvider>
   );
 };
 

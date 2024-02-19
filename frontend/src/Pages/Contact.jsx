@@ -9,10 +9,12 @@ import {
   Center,
   Text,
   Button,
+  ChakraProvider
 } from '@chakra-ui/react';
 
 const Contact = () => {
   return (
+    <ChakraProvider>
     <Box minH="100vh" bg="#c8e8e9">
       <Box
         width="85%"
@@ -94,6 +96,7 @@ const Contact = () => {
         </Box>
       </Box>
     </Box>
+    </ChakraProvider>
   );
 };
 
