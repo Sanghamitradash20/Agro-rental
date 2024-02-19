@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link, useHistory } from 'react-router-dom';
+import { useParams, Link} from 'react-router-dom';
 import { Box, Heading, Image, Text, Button } from '@chakra-ui/react';
 import axios from 'axios';
 
 const ProductDetails = () => {
   const { id } = useParams();
-  const history = useHistory();
+  // const history = useHistory();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -32,7 +32,7 @@ const ProductDetails = () => {
         quantity: 1,
       });
       alert('Item added to cart!');
-      history.push('/cart'); // Redirect to cart page
+      // history.push('/cart'); // Redirect to cart page
     } catch (error) {
       console.error('Error adding item to cart:', error);
     }
