@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from "framer-motion"
-import { Button, Heading, Box, useMediaQuery,Center,ChakraProvider } from '@chakra-ui/react';
+import { Button, Heading, Box, useMediaQuery, Center, Icon, Text } from '@chakra-ui/react';
+import { FaUser } from 'react-icons/fa'; // Import the user icon
+import { MdBuild } from "react-icons/md";
+import backgroundImage from '../images/agbg.jpg'; // Import the background image
 
 const LandingPage = () => {
   const [isMobile] = useMediaQuery("(max-width: 320px)");
@@ -41,9 +43,12 @@ const LandingPage = () => {
   };
 
   return (
-    <ChakraProvider>
-    <Box style={backgroundStyle} minH="100vh">
-      <Heading textAlign="center" fontSize="6xl" padding="50px 50px 10px 50px">Agro Rental</Heading>
+    <Box minH="90vh" pt="70" style={containerStyle}>
+      <Box style={backgroundStyle} />
+      <Box style={blurOverlayStyle} />
+      <Heading textAlign="center" fontSize="6xl" padding="50px 50px 10px 50px" style={{
+        textShadow: '2px 2px 4px rgba(0, 100, 0, 10)', // Horizontal offset, vertical offset, blur radius, and shadow color
+      }}>Agro Rental</Heading>
       <Heading textAlign="center" fontSize="md" fontStyle="italic">FEELS REAL AND AUTHENTIC</Heading>
 
       <Center>
@@ -69,7 +74,6 @@ const LandingPage = () => {
         </Link>
       </Box>
     </Box>
-    </ChakraProvider>
   );
 };
 

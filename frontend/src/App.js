@@ -42,7 +42,7 @@ const App = () => {
      <CartProvider>
      <LanguageProvider>
       <div>
-      
+      <div id="google_element"></div>
       <AllRoutes />
   </div></LanguageProvider></CartProvider>
     </ChakraProvider>
