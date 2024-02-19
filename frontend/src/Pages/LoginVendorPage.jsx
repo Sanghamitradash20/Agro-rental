@@ -10,7 +10,8 @@ import {
   Box,
   useMediaQuery,
   Heading,
-  ChakraProvider
+  ChakraProvider,
+  Text
 } from '@chakra-ui/react';
 const VendorLoginPage = () => {
   const navigate = useNavigate();
@@ -51,16 +52,15 @@ const VendorLoginPage = () => {
       console.error('Error logging in:', error);
     }
   };
+  const [message, setMessage] = useState('');
+  const [userNotFound, setUserNotFound] = useState(false);
 
   return (
     <ChakraProvider>
-    <Box minH="100vh" bgGradient="linear(green.500, blue.300, green.800)">
+  <Box minH="100vh" bgGradient="linear(#D4E7C5,#BFD8AF,#99BC85)">
     <Center minH="65vh">
-      <Box p="30" bgGradient="linear(green.500, blue.300, green.800)" w={isMobile ? "80%" : (isLargerThan768 ? "50%" : "100%")}
-        borderRadius={20}
-        boxShadow="0 0 20px darkgray, 0 0 20px black"
-      >
-        <Heading textAlign="center" fontSize="6xl">Vendor Login</Heading>
+      <Box p="30" bgGradient="linear(#D4E7C5,#BFD8AF,#99BC85)" w="100%" maxW="400px" borderRadius={20} boxShadow="0 0 20px darkgray, 0 0 20px black">
+        <Heading textAlign="center" fontSize="6xl" mb="6">Vendor Login</Heading>
         <form onSubmit={handleSubmit} style={{ fontSize: '18px', fontFamily: 'Arial' }}>
           <FormControl sx={{ marginBottom: "20px" }}>
             <FormLabel htmlFor="mobileNumber">Mobile Number:</FormLabel>
@@ -73,7 +73,7 @@ const VendorLoginPage = () => {
             />
           </FormControl>
           <FormControl sx={{ marginBottom: "20px" }}>
-            <FormLabel htmlFor="password">Password:</FormLabel>
+            <FormLabel htmlFor="password">PASSWORD:</FormLabel>
             <Input
               type="password"
               id="password"
@@ -82,13 +82,21 @@ const VendorLoginPage = () => {
               onChange={handleChange}
             />
           </FormControl>
-          <Button colorScheme="blue" type="submit" w="full">Login</Button>
+          <Button colorScheme="blue" type="submit" >Login</Button>
         </form>
-        <p>Signup<Link to="/signup/vendor">Click here</Link></p>
+        <Text textAlign="center" mt="4">Forgot your PIN? <Link to="/forgot-password">Click here</Link> to reset it.</Text>
+        {userNotFound && (
+          <Text textAlign="center" mt="4">
+            User not found. <Link to="/signup/vendor">Sign up</Link> as a new vendor.
+          </Text>
+        )}
+        {message && <Text textAlign="center">{message}</Text>}
+        <Text textAlign="center" mt="4">Signup<Link to="/signup/vendor">Click here</Link></Text>
       </Box>
     </Center>
   </Box>
-  </ChakraProvider>
+</ChakraProvider>
+
 );
 };
 

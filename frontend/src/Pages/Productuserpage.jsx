@@ -9,7 +9,7 @@ import {
   ChakraProvider,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import {axios} from "axios";
+import axios from "axios";
 import Navbar from "../Components/Navbar";
 import Uproductstyles from "./css/Uproductstyles.css";
 import tractor from "../images/tractor.png";

@@ -1,40 +1,41 @@
 // models/Farmer.js
-const mongoose = require('mongoose');
-
+const mongoose = require("mongoose");
 
 const farmerSchema = new mongoose.Schema({
   Name: {
     type: String,
-    required: true
+    required: true,
   },
   mobileNumber: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   address: {
     type: String,
-    required: true
+    required: true,
   },
   nearestPoliceStation: {
     type: String,
-    required: true
+    required: true,
   },
   cityVillage: {
     type: String,
-    required: true
+    required: true,
   },
   pincode: {
     type: String,
-    required: true
+    required: true,
   },
   password: {
     type: String,
     required: true,
-}
-
+  },
+  user: {
+    type: String,
+  },
 });
 
-const Farmer = mongoose.model('Farmer', farmerSchema);
+const Farmer = mongoose.model("Farmer", farmerSchema);
 
 module.exports = Farmer;

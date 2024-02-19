@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+import { makeStyles } from "@material-ui/core/styles";
 import {
+  Container,
+  Typography,
+  Grid,
   Card,
   CardActionArea,
-  CardContent,
   CardMedia,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import axios from "axios";
-import {
-  TextField,
+  CardContent,
   Button,
-  Container,
-  Grid,
-  Typography,
+  TextField,
 } from "@material-ui/core";
-import EditProductForm from "../Components/EditProductForm";
 
 const AddProduct = () => {
   const { vendorID } = useParams();
@@ -36,6 +33,17 @@ const AddProduct = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProduct((prevProduct) => ({ ...prevProduct, [name]: value }));
+  };
+
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setProduct({ ...product, imageUrl: reader.result });
+    };
+
+    reader.readAsDataURL(file);
   };
 
   const handleSubmit = async (e) => {
@@ -77,7 +85,6 @@ const AddProduct = () => {
       }
       const responseData = await response.json();
       setProducts(responseData.data);
-      // Initialize editMode state for each product
       const initialEditModeState = {};
       responseData.data.forEach((product) => {
         initialEditModeState[product._id] = false;
@@ -114,7 +121,7 @@ const AddProduct = () => {
         ...prevEditMode,
         [productId]: false,
       }));
-      fetchVendorProducts(); // Refresh the product list after saving
+      fetchVendorProducts();
     } catch (error) {
       console.error("Error updating product:", error);
     }
@@ -132,6 +139,24 @@ const AddProduct = () => {
       ...editedProduct,
       [event.target.name]: event.target.value,
     });
+  };
+
+  const handleDelete = async (productId) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/product/${productId}`,
+        {
+          method: "DELETE",
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to delete product");
+      }
+      console.log("Product deleted successfully");
+      fetchVendorProducts();
+    } catch (error) {
+      console.error("Error deleting product:", error);
+    }
   };
 
   const useStyles = makeStyles({
@@ -153,13 +178,13 @@ const AddProduct = () => {
 
   return (
     <Container maxWidth="md">
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom style={{ marginBottom: "5%" }}>
         Vendor Products
       </Typography>
       <Grid container spacing={3}>
         {products.length > 0 ? (
           products.map((product) => (
-            <Grid item xs={12} sm={6} md={3} key={product._id}>
+            <Grid item xs={12} sm={6} md={7} key={product._id}>
               <Card className={classes.root}>
                 {editMode[product._id] ? (
                   <CardContent>
@@ -207,6 +232,13 @@ const AddProduct = () => {
                     >
                       Cancel
                     </Button>
+                    <Button 
+                      variant="contained"
+                      color="secondary"
+                      onClick={() => handleDelete(product._id)}
+                    >
+                      Delete
+                    </Button>
                   </CardContent>
                 ) : (
                   <CardActionArea>
@@ -239,6 +271,13 @@ const AddProduct = () => {
                       >
                         Edit
                       </Button>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={() => handleDelete(product._id)}
+                      >
+                        Delete
+                      </Button>
                     </CardContent>
                   </CardActionArea>
                 )}
@@ -246,22 +285,18 @@ const AddProduct = () => {
             </Grid>
           ))
         ) : (
-          <Typography variant="body1">No products please add one..</Typography>
+          <Typography variant="body1" style={{ marginBottom: "5%" }}>
+            No products please add one..
+          </Typography>
         )}
       </Grid>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom style={{ marginBottom: "5%" }}>
         Add New Product
       </Typography>
       <form onSubmit={handleSubmit}>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <TextField
-              label="Image URL"
-              fullWidth
-              name="imageUrl"
-              value={product.imageUrl}
-              onChange={handleInputChange}
-            />
+            <input accept="image/*" type="file" onChange={handleImageUpload} />
           </Grid>
           <Grid item xs={12}>
             <TextField
@@ -318,12 +353,7 @@ const AddProduct = () => {
             />
           </Grid>
           <Grid item xs={12}>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              fullWidth
-            >
+            <Button type="submit" variant="contained" color="primary" fullWidth>
               Add Product
             </Button>
           </Grid>

@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const accountSid = "AC3e4c15663fc32f95d8dad97f9e217e86";
-const authToken = "bae5c318d03bff6dc7458e907b39c549";
+const authToken = "2b6f19978fa180f620aaf723d8887b91";
 const client = require("twilio")(accountSid, authToken);
 const JWT_KEY = process.env.JWT_KEY;
 
@@ -56,6 +56,7 @@ const vendorController = {
           cityVillage: req.body.cityVillage,
           pincode: req.body.pincode,
           password: await bcrypt.hash(password, 12),
+          user:"vendor"
         });
         const vendorId = newUser._id;
         await newUser.save();
