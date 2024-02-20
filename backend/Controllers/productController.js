@@ -89,10 +89,74 @@ const getVendorProducts = async (req, res) => {
     }
   };
 
+  const getProductsByType = async (req, res) => {
+    console.log(req.params.type)
+  const type = req.params.type; // Assuming the type is passed as a parameter
+    
+      try {
+        // Find all products where type matches the provided type
+        const products = await Product.find({ type });
+        
+        res.status(200).json({ success: true, data: products });
+      } catch (error) {
+        console.error('Error fetching products by type:', error);
+        res.status(500).json({ success: false, error: 'Server error' });
+      }
+    };
+
+    const getProductById = async (req, res) => {
+      console.log(req.params)
+      const productId = req.params.id; 
+      console.log(productId);// Assuming the product ID is passed as a parameter
+    
+      try {
+        // Find the product by its ID
+        const product = await Product.findOne({ _id: productId });;
+    
+        // Check if the product exists
+        if (!product) {
+          return res.status(404).json({ success: false, error: 'Product not found' });
+        }
+    
+        // If the product exists, return its properties
+        const {
+          _id,
+          vendorId,
+          imageUrl,
+          type,
+          brand,
+          model,
+          description,
+          price,
+          quantity
+        } = product;
+    
+        res.status(200).json({
+          success: true,
+          data: {
+            _id,
+            vendorId,
+            imageUrl,
+            type,
+            brand,
+            model,
+            description,
+            price,
+            quantity
+          }
+        });
+      } catch (error) {
+        console.error('Error fetching product by ID:', error);
+        res.status(500).json({ success: false, error: 'Server error' });
+      }
+    };
+
 
 module.exports = {
   createProduct,
   editProduct,
   deleteProduct,
-  getVendorProducts
+  getVendorProducts,
+  getProductsByType,
+  getProductById
 };
