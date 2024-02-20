@@ -1,12 +1,22 @@
-
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Box, Grid, Heading, Image, Text,ChakraProvider } from '@chakra-ui/react';
+import { useParams } from 'react-router-dom';
+import { Box, Typography, Grid } from '@material-ui/core';
 import axios from 'axios';
 import ProductCard from '../Components/ProductCard';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    padding: theme.spacing(2),
+  },
+  gridContainer: {
+    spacing: 4,
+  },
+}));
 
 const ProductListByType = () => {
-  //const { type } = useParams();
+  const classes = useStyles();
   const { farmerId, type } = useParams();
   const [products, setProducts] = useState([]);
 
@@ -14,10 +24,7 @@ const ProductListByType = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/product/type/${type}`);
-        //setProducts(response.data);
         setProducts(response.data.data || []);
-        console.log(response.data);
-
       } catch (error) {
         console.error(error);
       }
@@ -27,16 +34,16 @@ const ProductListByType = () => {
   }, [farmerId, type]);
 
   return (
-    <ChakraProvider>
-    <Box>
-      <Heading size="lg" mb="4">{type}</Heading>
-      <Grid templateColumns="repeat(auto-fill, minmax(200px, 1fr))" gap="4">
-          {products.map(product => (
-            <ProductCard key={product._id} product={product} farmerId={farmerId}/> // Ensure each card has a unique key
-          ))}
-        </Grid>
+    <Box className={classes.root}>
+      <Typography variant="h4" gutterBottom>
+        {type}
+      </Typography>
+      <Grid container className={classes.gridContainer}>
+        {products.map((product) => (
+          <ProductCard key={product._id} product={product} farmerId={farmerId} />
+        ))}
+      </Grid>
     </Box>
-    </ChakraProvider>
   );
 };
 

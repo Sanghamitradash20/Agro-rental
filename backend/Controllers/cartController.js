@@ -27,11 +27,13 @@ const addToCart = async (req, res) => {
 // Controller function to get the user's cart
 const getUserCart = async (req, res) => {
   const { farmerId } = req.params;
+  console.log(farmerId)
 
   try {
-    const cartItems = await Cart.find({ farmerId });
+    const cartItems = await Cart.findOne({ farmerId });
+console.log(cartItems)
+    res.status(200).json({ success: true, item: cartItems });
 
-    res.status(200).json({ success: true, data: cartItems });
   } catch (error) {
     console.error('Error getting user cart:', error);
     res.status(500).json({ success: false, error: 'Server error' });

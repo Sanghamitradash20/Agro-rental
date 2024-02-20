@@ -15,16 +15,18 @@ import {
 const Contact = () => {
   return (
     <ChakraProvider>
-    <Box minH="100vh" bg="#c8e8e9">
-      <Box
-        width="85%"
-        bg="#fff"
-        borderRadius="6px"
-        boxShadow="0 5px 10px rgba(0, 0, 0, 0.2)"
-        p="20px 60px 30px 40px"
-        mt="50px"
-        position="relative"
-      >
+      <Center minH="100vh" bg="#c8e8e9">
+        <Box
+          width={{ base: "90%", md: "85%" }} // Responsive width
+          bg="#fff"
+          borderRadius="6px"
+          boxShadow="0 5px 10px rgba(0, 0, 0, 0.2)"
+          p={{ base: "20px", md: "20px 60px 30px 40px" }} // Responsive padding
+          mt="50px"
+          position="relative"
+        >
+    
+
         <Box display="flex" justifyContent="end">
           <Box>
             <Heading as="h3" color="blue.500" mr="30px">
@@ -95,7 +97,7 @@ const Contact = () => {
           </Box>
         </Box>
       </Box>
-    </Box>
+      </Center>
     </ChakraProvider>
   );
 };
