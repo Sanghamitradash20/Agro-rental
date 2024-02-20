@@ -12,6 +12,7 @@ import {
   CardContent,
   Button,
   TextField,
+  Select, MenuItem, FormControl, InputLabel
 } from "@material-ui/core";
 
 const AddProduct = () => {
@@ -19,6 +20,7 @@ const AddProduct = () => {
   const [products, setProducts] = useState([]);
   const [product, setProduct] = useState({
     _id: "",
+    Name: "",
     imageUrl: "",
     type: "",
     brand: "",
@@ -57,6 +59,7 @@ const AddProduct = () => {
 
       if (response.status === 201) {
         setProduct({
+          Name: "",
           imageUrl: "",
           type: "",
           brand: "",
@@ -78,7 +81,7 @@ const AddProduct = () => {
   const fetchVendorProducts = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/product/${vendorID}`
+        `http://localhost:5000/api/product/vendor/${vendorID}`
       );
       if (!response.ok) {
         throw new Error("Failed to fetch vendor products");
@@ -177,17 +180,28 @@ const AddProduct = () => {
   const classes = useStyles();
 
   return (
-    <Container maxWidth="md">
-      <Typography variant="h4" gutterBottom style={{ marginBottom: "5%" }}>
-        Vendor Products
+    <Container>
+      <Typography
+        variant="h4"
+        gutterBottom
+        style={{ marginBottom: "1%", marginTop: "2%" }}
+      >
+        Your Products
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={2} style={{ width: "100%", margin: 0 }}>
         {products.length > 0 ? (
           products.map((product) => (
-            <Grid item xs={12} sm={6} md={7} key={product._id}>
-              <Card className={classes.root}>
+            <Grid item xs={12} sm={6} md={4} key={product._id}>
+              <Card className={classes.root} style={{ height: "100%" }}>
                 {editMode[product._id] ? (
                   <CardContent>
+                    <TextField
+                      name="Name"
+                      value={editedProduct.Name}
+                      onChange={handleChange}
+                      label="Name"
+                    />
+
                     <TextField
                       name="brand"
                       value={editedProduct.brand}
@@ -199,6 +213,12 @@ const AddProduct = () => {
                       value={editedProduct.model}
                       onChange={handleChange}
                       label="Model"
+                    />
+                    <TextField
+                      name="type"
+                      value={editedProduct.type}
+                      onChange={handleChange}
+                      label="Type"
                     />
                     <TextField
                       name="description"
@@ -232,7 +252,7 @@ const AddProduct = () => {
                     >
                       Cancel
                     </Button>
-                    <Button 
+                    <Button
                       variant="contained"
                       color="secondary"
                       onClick={() => handleDelete(product._id)}
@@ -259,7 +279,13 @@ const AddProduct = () => {
                         {product.description}
                       </Typography>
                       <Typography variant="body1">
-                        Price: ${product.price}
+                        Type: {product.type}
+                      </Typography>
+                      <Typography variant="body1">
+                        Name: {product.Name}
+                      </Typography>
+                      <Typography variant="body1">
+                        Price: {product.price}
                       </Typography>
                       <Typography variant="body1">
                         Quantity: {product.quantity}
@@ -290,7 +316,11 @@ const AddProduct = () => {
           </Typography>
         )}
       </Grid>
-      <Typography variant="h4" gutterBottom style={{ marginBottom: "5%" }}>
+      <Typography
+        variant="h4"
+        gutterBottom
+        style={{ marginBottom: "5%", marginTop: "5%" }}
+      >
         Add New Product
       </Typography>
       <form onSubmit={handleSubmit}>
@@ -300,12 +330,32 @@ const AddProduct = () => {
           </Grid>
           <Grid item xs={12}>
             <TextField
-              label="Type"
+              label="Name"
               fullWidth
-              name="type"
-              value={product.type}
+              name="Name"
+              value={product.Name}
               onChange={handleInputChange}
             />
+          </Grid>
+          <Grid item xs={12}>
+          <FormControl fullWidth>
+              <InputLabel id="type-label">Type</InputLabel>
+              <Select
+                labelId="type-label"
+                name="type"
+                value={product.type}
+                onChange={handleInputChange}
+              >
+                <MenuItem value="Rotavator">Rotavator</MenuItem>
+                <MenuItem value="Digger">Digger</MenuItem>
+                <MenuItem value="Tractor">Tractor</MenuItem>
+                <MenuItem value="Cultivator">Cultivator</MenuItem>
+                <MenuItem value="Thresher">Thresher</MenuItem>
+                <MenuItem value="Baler">Baler</MenuItem>
+                <MenuItem value="seed_drill">Seed Drill</MenuItem>
+                <MenuItem value="Drone">Drone</MenuItem>
+              </Select>
+            </FormControl>
           </Grid>
           <Grid item xs={12}>
             <TextField

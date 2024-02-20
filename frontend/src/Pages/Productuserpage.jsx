@@ -8,7 +8,7 @@ import {
   Text,
   ChakraProvider,
 } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Components/Navbar";
 import Uproductstyles from "./css/Uproductstyles.css";
@@ -21,6 +21,7 @@ import rotavtor from "../images/rotavtor.png";
 import thresher from "../images/thresher.jpg";
 import cultivator1 from "../images/cultivator1.png";
 import digger from "../images/digger.png";
+import sdrill from "../images/seeddrill.webp"
 const ProductPage = () => {
   const { farmerId } = useParams();
   console.log(farmerId);
@@ -47,17 +48,21 @@ const ProductPage = () => {
     getdetails();
   }, [farmerId]);
   const products = [
-    { id: 1, name: "Rotavtor", price: "$10", image: rotavtor },
-    { id: 2, name: "Digger", price: "$20", image: digger },
-    { id: 3, name: "Tractor", price: "$30", image: Tractor },
-    { id: 4, name: "Cultivator", price: "$40", image: cultivator1 },
-    { id: 5, name: "Thresher", price: "$50", image: thresher },
-    { id: 6, name: "Baler", price: "$60", image: baler },
+    { id: 1, name: "Rotavtor",  image: rotavtor },
+    { id: 2, name: "Digger",    image: digger },
+    { id: 3, name: "Tractor",   image: Tractor },
+    { id: 4, name: "Cultivator",image: cultivator1 },
+    { id: 5, name: "Thresher",  image: thresher },
+    { id: 6, name: "Baler",     image: baler },
+    { id: 7, name: "seed_drill", image:sdrill },
+    // { id: 8, name: "drone",      image:drone},
   ];
-  const handleOnClick = (productId) => {
-    console.log(productId);
+  const handleOnClick = (name) => {
+    const type=name;
+    navigate(`/farmer/products/${farmerId}/${type}`)
+   
   };
-
+ 
   // base: "0px",
   // sm: "320px",
   // md: "768px",
@@ -68,7 +73,7 @@ const ProductPage = () => {
     <div>
       <Navbar />
       <ChakraProvider>
-        <Box className="image" >
+        <Box className="image">
           <Stack direction="column" spacing={{ base: 4, md: 8 }} width={"100%"}>
             <Box className="Pheader">
               <ChakraProvider>
@@ -144,7 +149,7 @@ const ProductPage = () => {
                   <img
                     src={product.image}
                     className="product-image"
-                    onClick={() => handleOnClick(product.id)}
+                    onClick={() => handleOnClick(product.name)}
                     alt={product.name}
                   />
                   <Heading size="sm" mb={2}>
@@ -164,48 +169,3 @@ const ProductPage = () => {
 };
 
 export default ProductPage;
-
-/* <Stack direction="row" spacing={8} width="100%">
-<Box
-  width="20%"
-  p={4}
-  borderWidth="1px"
-  borderColor="gray.200"
-  borderRadius="md"
->
-  <Heading size="md" mb={4}>
-    User Details
-  </Heading>
-  <Box>
-    <strong>Name:</strong> {userDetails.name}
-  </Box>
-  <Box>
-    <strong>Email:</strong> {userDetails.email}
-  </Box>
-  <Box>
-    <strong>Address:</strong> {userDetails.address}
-  </Box>
-  <Box>
-    <strong>Phone Number:</strong> {userDetails.phoneNumber}
-  </Box>
-</Box>
-<Box width="80%" p={4}>
-  <Heading size="md" mb={4}>
-    Products
-  </Heading>
-  <Grid templateColumns="repeat(4, 1fr)" gap={6}>
-    {products.map((product) => (
-      <GridItem key={product.id}>
-        <Box borderWidth="1px" rounded="lg" p={4} borderColor="gray.200">
-          <Heading size="sm" mb={2}>
-            {product.name}
-          </Heading>
-          <Box>
-            <strong>Price:</strong> {product.price}
-          </Box>
-        </Box>
-      </GridItem>
-    ))}
-  </Grid>
-</Box>
-</Stack> */

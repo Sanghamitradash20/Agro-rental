@@ -4,7 +4,7 @@ import { Button, Heading, Box, useMediaQuery, Center, Icon, Text,ChakraProvider 
 import { FaUser } from 'react-icons/fa'; // Import the user icon
 import { MdBuild } from "react-icons/md";
 import backgroundImage from '../images/agbg.jpg'; // Import the background image
-
+import Language from './Language';
 const LandingPage = () => {
   const [isMobile] = useMediaQuery("(max-width: 320px)");
   const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
@@ -45,6 +45,7 @@ const LandingPage = () => {
   return (
     <ChakraProvider>
     <Box minH="90vh" pt="70" style={containerStyle}>
+      <Language/>
       <Box style={backgroundStyle} />
       <Box style={blurOverlayStyle} />
       <Heading textAlign="center" fontSize="6xl" padding="50px 50px 10px 50px" style={{

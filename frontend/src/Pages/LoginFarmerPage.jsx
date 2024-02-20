@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import {axios} from 'axios';
+import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { FormControl, FormLabel, Input, Button, Box, Heading, Center, ChakraProvider, ThemeProvider } from '@chakra-ui/react';
-
+// import farmerlogin from "../images/farmerlogin.jpg";
+import Loginuser from "./css/Loginuser.css";
 const FarmerLogin = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -41,9 +42,10 @@ const FarmerLogin = () => {
   return (
     <ChakraProvider>
       {/* <ThemeProvider> */}
-      <Box minH="100vh" bgGradient="linear(#D4E7C5,#BFD8AF,#99BC85)">
+      {/* bgGradient="linear(#D4E7C5,#BFD8AF,#99BC85)" */}
+      <Box minH="100vh" className='main'>
         <Center minH="65vh">
-          <Box p="30" bgGradient="linear(#D4E7C5,#BFD8AF,#99BC85)" w="100%" maxW="400px" borderRadius={20} boxShadow="0 0 20px darkgray, 0 0 20px black">
+          <Box p="30"  className='box' bgGradient="linear(#D4E7C5,#BFD8AF,#99BC85)"  borderRadius={20} boxShadow="0 0 20px darkgray, 0 0 20px black">
             <Heading textAlign="center" fontSize="6xl" mb="6">Farmer Login</Heading>
             <form onSubmit={handleSubmit} style={{ fontSize: '18px', fontFamily: 'Arial' }}>
               <FormControl sx={{ marginBottom: "20px" }}>

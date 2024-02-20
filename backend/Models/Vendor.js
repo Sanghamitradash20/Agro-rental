@@ -7,6 +7,10 @@ const vendorSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  Bname:{
+    type:String,
+    required:true,
+  },
   mobileNumber: {
     type: String,
     required: true,

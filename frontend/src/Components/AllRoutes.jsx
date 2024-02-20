@@ -9,7 +9,6 @@ import SignupFarmerPage from '../Pages/SignupFarmerPage';
 import SignupVendorPage from '../Pages/SignupVendorPage';
 import Productuserpage from '../Pages/Productuserpage';
 import Productvendorpage from '../Pages/Productvendorpage'
-// import VendorDashboardPage from '../Pages/VendorDashboardPage'
 import FarmerForgotPassword from "../Pages/FarmerForgotPassword";
 import AddProduct from "../Pages/AddProduct";
 import CartPage from '../Pages/CartPage';
@@ -28,9 +27,9 @@ const AllRoutes = () => {
       <Route path="/forgot-password" element={<FarmerForgotPassword/>}></Route>
       <Route path="/vendor/dashboard/:vendorID" element={<Productvendorpage/>}></Route>
       <Route path="/vendor/addproduct/:vendorID" element={<AddProduct/>}></Route>
-      <Route path='/cart' element={<CartPage/>}></Route> 
-      <Route path="/:type/:id" element={<ProductDetails/>}></Route>
-      <Route path="/:type" element={<ProductListByType/>}></Route>
+      <Route path='/cart/farmerId' element={<CartPage/>}></Route> 
+      <Route path="/farmer/products/:farmerId/:type/:id" element={<ProductDetails/>}></Route>
+      <Route path="/farmer/products/:farmerId/:type" element={<ProductListByType/>}></Route>
     </Routes>
   );
 };

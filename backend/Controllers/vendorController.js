@@ -56,6 +56,7 @@ const vendorController = {
           cityVillage: req.body.cityVillage,
           pincode: req.body.pincode,
           password: await bcrypt.hash(password, 12),
+          Bname:req.body.Bname,
           user:"vendor"
         });
         const vendorId = newUser._id;

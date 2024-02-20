@@ -19,6 +19,7 @@ import {
 const SignupVendorPage = () => {
   const [formData, setFormData] = useState({
     Name: "",
+    Bname: "",
     mobileNumber: "",
     address: "",
     nearestPoliceStation: "",
@@ -95,7 +96,7 @@ const SignupVendorPage = () => {
         "http://localhost:5000/api/vendors/verify-otp",
         {
           ...formData,
-          otp: otpData.otp.toString().padStart(4, '0'), // Ensure OTP has 4 digits
+          otp: otpData.otp.toString().padStart(4, "0"), // Ensure OTP has 4 digits
         }
       );
       if (response.data.success) {
@@ -112,7 +113,7 @@ const SignupVendorPage = () => {
       });
     }
   };
-  
+
   const [isMobile] = useMediaQuery("(max-width: 320px)");
   const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   return (
@@ -138,6 +139,16 @@ const SignupVendorPage = () => {
                   onChange={handleChange}
                   id="VName"
                   name="Name"
+                />
+              </FormControl>
+              <FormControl id="Bname" isRequired>
+                <FormLabel>Business Name:</FormLabel>
+                <Input
+                  type="text"
+                  value={formData.Bname}
+                  onChange={handleChange}
+                  id="Bname"
+                  name="Bname"
                 />
               </FormControl>
               <FormControl id="mobileNumber" isRequired>

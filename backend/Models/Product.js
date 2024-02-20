@@ -6,6 +6,10 @@ const productSchema = new mongoose.Schema({
     ref: 'Vendor',
     required: true
   },
+  Name:{
+    type:String,
+    required:true
+  },
   imageUrl: {
     type: String,
     required: true

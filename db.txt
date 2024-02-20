@@ -1,0 +1,170 @@
+
+imageUrl
+"https://5.imimg.com/data5/SELLER/Default/2022/3/ST/EI/RY/192022/nation…"
+type
+"seed_drill"
+brand
+"National Agro Industries"
+model
+"NSS"
+description
+"Usage/Application:Agriculture,Tractor Drawn, Number of Tynes:11,Materi…"
+price
+"200"
+quantity
+10
+__v
+0
+_id
+imageUrl
+"https://5.imimg.com/data5/SELLER/Default/2023/10/356921940/JL/RE/KR/14…"
+type
+"seed_drill"
+brand
+"Sonalika"
+model
+"matharu"
+description
+"MaterialMaterial:Mild Steel,Type:Automatic,Number of Tynes:10 tyne,Tra…"
+price
+380
+quantity
+4
+__v
+0
+_id
+imageUrl
+"data:image/jpeg;base64,/9j/2wBDAAQDAwQDAwQEBAQFBQQFBwsHBwYGBw4KCggLEA4…"
+type
+"seed_drill"
+brand
+"National Agro Industries Type"
+model
+"NSS"
+description
+"Usage/Application:Agriculture,Tractor Drawn, Number of Tynes:11,Materi…"
+price
+290
+quantity
+3
+__v
+0
+_id
+imageUrl
+"data:image/webp;base64,UklGRoAuAABXRUJQVlA4IHQuAABQrQCdASosASwBPrFMnEe…"
+type
+"cultivator"
+brand
+"RBD Machine’s"
+model
+"7HP Power Weeder"
+description
+"This is a power weeder and cultivator that is suitable for garden and …"
+price
+"₹48,999.00 , per hour  ₹2000 Rupees only"
+quantity
+2
+__v
+0
+_id
+imageUrl
+"data:image/webp;base64,UklGRv4FAwBXRUJQVlA4IPIFAwCwgQmdASroA+gDPkkgjUQ…"
+type
+"seed_drill"
+brand
+"Sonalika"
+model
+"Matharu"
+description
+"Material:Mild Steel,Type:Automatic,Number of Tynes:10 tyne,Tractor HP:…"
+price
+300
+quantity
+5
+__v
+0
+_id
+imageUrl
+"data:image/webp;base64,UklGRm4+AABXRUJQVlA4IGI+AAAQsAGdASroAzMCPkkkkEW…"
+type
+"sievemachine"
+brand
+"Rathode"
+model
+"A40"
+description
+"Operation Mode:Automatic,Electricity Connection:Three Phase,Motor Powe…"
+price
+250
+quantity
+6
+__v
+0
+_id
+imageUrl
+"data:image/webp;base64,UklGRqiZAABXRUJQVlA4IJyZAAAwIgKdASq2AfQBPkkgjUS…"
+type
+"sievemachine"
+brand
+"techmks"
+model
+"Neon"
+description
+"Operation ModeMode of Operation:Semi Automatic,Electricity Connection:…"
+price
+150
+quantity
+3
+__v
+0
+_id
+imageUrl
+"data:image/webp;base64,UklGRrxUAQBXRUJQVlA4ILBUAQBwSgadASroAzMCPkkgjEO…"
+type
+"SprayingDrones"
+brand
+"drone destination"
+model
+"Carbon"
+description
+"Capacity:5L,Camera Technology:Digital Camera,Material:Carbon Fiber,Mod…"
+price
+1000
+quantity
+2
+__v
+0
+_id
+imageUrl
+"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAUFBQoHCgoKCg0…"
+type
+" Novo3ds.In Honda Water Pump 4 Stroke Petrol Engine High Discharge Pum…"
+brand
+"Novo3ds.In"
+model
+"Honda Water Pump 4 Stroke Petrol Engine WB15X"
+description
+"This is a water pump with a 4 stroke petrol engine. It is used for agr…"
+price
+" ₹99,900.00"
+quantity
+2
+__v
+0
+_id
+imageUrl
+"data:image/webp;base64,UklGRm4pAABXRUJQVlA4IGIpAACwzACdASqwAU8BPm0ylUe…"
+type
+"Agrizone Square Baler AZ"
+brand
+" Agrizone"
+model
+"Square Baler AZ"
+description
+"A baler machine is a piece of farm machinery used to compress a cut an…"
+price
+" ₹5.6 lakhs"
+quantity
+1
+__v
+0

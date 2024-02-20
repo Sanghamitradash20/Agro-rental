@@ -55,7 +55,7 @@
 }
 .image {
   /* background-image: url("../../images/back.jpeg"); */
- background-image: url('https://images.pexels.com/photos/2132171/pexels-photo-2132171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+ background-image: url('../../images/back.jpeg');
   background-repeat: no-repeat;
   width: 100%;
   background-position: center top;
@@ -76,7 +76,7 @@
   width: 100%;
 }
 .userdetails {
-  border: 1px solid black;
+  border: 1px ;
   border-radius: 10px;
   overflow: "hidden";
   padding: 4px;
@@ -85,6 +85,7 @@
   font-size: x-large;
   color: azure;
   margin: 40px;
+  margin-left: 5%;
   /* background-color: #c48c53; */
 }
 .grids {
