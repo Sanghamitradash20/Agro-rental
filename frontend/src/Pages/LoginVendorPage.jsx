@@ -13,6 +13,7 @@ import {
   ChakraProvider,
   Text
 } from '@chakra-ui/react';
+import Loginvendor from './css/Loginvendor.css'
 const VendorLoginPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -57,9 +58,10 @@ const VendorLoginPage = () => {
 
   return (
     <ChakraProvider>
-  <Box minH="100vh" bgGradient="linear(#D4E7C5,#BFD8AF,#99BC85)">
+      {/* bgGradient="linear(#D4E7C5,#BFD8AF,#99BC85) */}
+  <Box minH="100vh" className='main'>
     <Center minH="65vh">
-      <Box p="30" bgGradient="linear(#D4E7C5,#BFD8AF,#99BC85)" w="100%" maxW="400px" borderRadius={20} boxShadow="0 0 20px darkgray, 0 0 20px black">
+      <Box p="30" bgGradient="linear(#D4E7C5,#BFD8AF,#99BC85)" className='box' borderRadius={20} boxShadow="0 0 20px darkgray, 0 0 20px black">
         <Heading textAlign="center" fontSize="6xl" mb="6">Vendor Login</Heading>
         <form onSubmit={handleSubmit} style={{ fontSize: '18px', fontFamily: 'Arial' }}>
           <FormControl sx={{ marginBottom: "20px" }}>
